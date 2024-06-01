@@ -4,6 +4,7 @@
 #include "CMakeProject1.h"
 #include <vector>
 #include <algorithm> // For std::copy
+#include <iostream>
 using namespace std;
 
 //SAKURA 
@@ -23,29 +24,47 @@ using namespace std;
 
 class Sorting
 {
-    public:
-        std::vector<char> remaining_letters;
+public:
+    std::vector<char> remaining_letters;
 
-    protected:
-        const char default_letters[6] = 
-        { 
-            'S', 'A', 'K', 'U', 'R', 'A' 
-        };
+protected:
+    const char default_letters[6] =
+    {
+        'S', 'A', 'K', 'U', 'R', 'A'
+    };
 
-    public:
-        Sorting()
-        {
-            reinitialize();
-        };
+public:
 
-        void reinitialize()
-        {
-            // Clear the remaining_letters vector of any existing members
-            remaining_letters.clear();
-            // Copy the contents of default_letters into remaining_letters
-            remaining_letters.insert(remaining_letters.end(), default_letters, default_letters + 6);
-        };
+    void reinitialize()
+    {
+        // Clear the remaining_letters vector of any existing members
+        remaining_letters.clear();
+        // Copy the contents of default_letters into remaining_letters
+        remaining_letters.insert(remaining_letters.end(), default_letters, default_letters + 6);
+    };
 };
+
+
+/*class Input
+{
+
+public: 
+    struct given_input
+    {
+        char chosen_letter;
+        bool chosen_direction; //t for left, f for right 
+    }; 
+    
+    char guess_letter() //returns player guess. players cannot see remaining letters, part of the logic game 
+    {
+
+    };
+  
+};*/
+
+
+
+
 
 int main()
 {
@@ -56,6 +75,10 @@ int main()
     {
         std::cout << c << "\n";
     }
+    sorting.reinitialize();
+    //Input input;
+    //char guessedLetter = input.guess_letter();
+    //std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;
 }

@@ -45,29 +45,11 @@ public:
 };
 
 
-/*class Input
-{
-
-public: 
-    struct given_input
-    {
-        char chosen_letter;
-        bool chosen_direction; //t for left, f for right 
-    }; 
-    
-    char guess_letter() //returns player guess. players cannot see remaining letters, part of the logic game 
-    {
-
-    };
-  
-};*/
-
-
-
 
 
 int main()
 {
+    
     Sorting sorting;
     sorting.reinitialize();
 
@@ -76,9 +58,9 @@ int main()
         std::cout << c << "\n";
     }
     sorting.reinitialize();
-    //Input input;
-    //char guessedLetter = input.guess_letter();
-    //std::cout << "Guessed Letter: " << guessedLetter << "\n";
+    Input input;
+    char guessedLetter = input.guess_letter();
+    std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;
 }

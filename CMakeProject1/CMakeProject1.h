@@ -5,20 +5,14 @@
 
 #include <iostream>
 
-// TODO: Reference additional headers your program requires here.
-#ifndef INPUT_H
-#define INPUT_H
-
 class Input
 {
-public:
-    struct given_input
-    {
-        char chosen_letter;
-        bool chosen_direction; // true for left, false for right
-    };
+public: 
+	struct given_input
+	{
+		char chosen_letter; 
+		bool chosen_direction; //true for left, false for right
+	};
 
-    char guess_letter(); // returns player guess. players cannot see remaining letters, part of the logic game
+	char guess_letter();
 };
-
-#endif // INPUT_H

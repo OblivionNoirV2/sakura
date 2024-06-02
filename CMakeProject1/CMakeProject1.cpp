@@ -53,7 +53,7 @@ int main()
     }
     sorting.reinitialize();
     Input input;
-    char guessedLetter = input.get_input();
+    char guessedLetter = input.get_input(); //this will be a hash with the chosen char and direction to place it 
     std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;

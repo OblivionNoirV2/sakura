@@ -1,8 +1,10 @@
 #include "CMakeProject1.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
+//this will actually return a char and a bool (left or right) in hash form, not just a char 
 char Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false; 
@@ -18,14 +20,15 @@ char Input::get_input() //first get user input, then compare it to default lette
 
 
     }
+
+    bool chosen_direction; //true for left, false for right
+
     
 
-
+ 
     return 'b';
 
     
-   
-   
 }
 
 /*

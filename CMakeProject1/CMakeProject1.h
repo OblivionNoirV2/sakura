@@ -7,13 +7,16 @@
 class Input
 {
 public: 
-	struct given_input
-	{
-		char chosen_letter; 
-		bool chosen_direction; //true for left, false for right
-	};
 
-	char guess_letter();
+	char chosen_letter; 
+	bool chosen_direction; //true for left, false for right
+
+	char get_input();
+};
+
+const char default_letters[6] =
+{
+	'S', 'A', 'K', 'U', 'R', 'A'
 };
 
 #endif

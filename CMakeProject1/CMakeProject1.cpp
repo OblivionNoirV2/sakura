@@ -25,15 +25,9 @@ using namespace std;
 class Sorting
 {
 public:
+
     std::vector<char> remaining_letters;
 
-protected:
-    const char default_letters[6] =
-    {
-        'S', 'A', 'K', 'U', 'R', 'A'
-    };
-
-public:
 
     void reinitialize()
     {
@@ -59,7 +53,7 @@ int main()
     }
     sorting.reinitialize();
     Input input;
-    char guessedLetter = input.guess_letter();
+    char guessedLetter = input.get_input();
     std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;

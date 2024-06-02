@@ -3,9 +3,11 @@
 
 
 
-char Input::guess_letter()
+char Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
-    return 'a';
+    return 'b';
+   
+   
 }
 
 /*

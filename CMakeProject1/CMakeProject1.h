@@ -1,9 +1,8 @@
-﻿// CMakeProject1.h : Include file for standard system include files,
-// or project specific include files.
+﻿#include <iostream>
 
-#pragma once
 
-#include <iostream>
+#ifndef INPUT_H
+#define INPUT_H 
 
 class Input
 {
@@ -16,3 +15,5 @@ public:
 
 	char guess_letter();
 };
+
+#endif

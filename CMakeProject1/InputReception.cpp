@@ -2,8 +2,6 @@
 #include <iostream>
 
 
-#ifndef INPUT_H
-#define INPUT_H
 
 char Input::guess_letter()
 {
@@ -26,4 +24,4 @@ public:
     }
 };
 */
-#endif // INPUT_H
+

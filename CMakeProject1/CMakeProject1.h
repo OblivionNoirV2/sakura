@@ -8,7 +8,7 @@ class Input
 {
 public: 
 
-	char chosen_letter; 
+	char chosen_letter; //this is the validated one
 	bool chosen_direction; //true for left, false for right
 
 	char get_input();

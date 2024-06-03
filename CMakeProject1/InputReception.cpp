@@ -21,7 +21,7 @@ map<bool, char> Input::get_input() //first get user input, then compare it to de
         if (find(begin(default_letters), end(default_letters), letter) != end(default_letters))
         {
             cout << "found letter" << endl; 
-            is_input_valid = true; 
+            is_input_valid = true; //remember to reset this after the input is done 
         }
 
 

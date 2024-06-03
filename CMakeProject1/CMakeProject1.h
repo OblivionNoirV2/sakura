@@ -1,4 +1,7 @@
 ﻿#include <iostream>
+#include <map> 
+
+using namespace std; 
 
 
 #ifndef INPUT_H
@@ -8,7 +11,7 @@ class Input
 {
 public: 
 
-	char get_input();
+	map<bool, char> get_input();
 };
 
 const char default_letters[6] =

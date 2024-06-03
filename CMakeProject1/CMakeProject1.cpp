@@ -26,15 +26,11 @@ class Sorting
 {
 public:
 
-    vector<char> remaining_letters;
 
-
-    void reinitialize()
+    void reinitialize() //reset the grid 
     {
-        // Clear the remaining_letters vector of any existing members
-        remaining_letters.clear();
-        // Copy the contents of default_letters into remaining_letters
-        remaining_letters.insert(remaining_letters.end(), default_letters.begin(), default_letters.end());
+        //fill coordinates with x 
+
     };
 };
 
@@ -47,13 +43,9 @@ int main()
     Sorting sorting;
     sorting.reinitialize();
 
-    for (char c : sorting.remaining_letters)
-    {
-        std::cout << c << "\n";
-    }
-    sorting.reinitialize();
+    //sorting.reinitialize();
     Input input;
-    map<bool, char> recieved_input = input.get_input(); //this will be a hash with the chosen char and direction to place it 
+    reception_map recieved_input = input.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;

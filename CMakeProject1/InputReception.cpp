@@ -18,16 +18,20 @@ reception_map Input::get_input() //first get user input, then compare it to defa
         letter = toupper(letter); 
 
         //check if the letter is in the default set 
-        if (find(begin(default_letters), end(default_letters), letter) != end(default_letters))
+        if (find(begin(valid_letters), end(valid_letters), letter) != end(valid_letters))
         {
             cout << "found letter" << endl; 
             is_input_valid = true; //remember to reset this after the input is done 
         }
+        else
+        {
+            cout << "Valid inputs are s, a, k, u, r, a" << '\n' << endl; 
+        }
 
-
+            
     }
 
-    bool chosen_direction; //true for left, false for right
+    int chosen_direction; //up down left right, 1 2 3 4 
 
     
 

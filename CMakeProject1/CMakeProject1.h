@@ -1,34 +1,38 @@
-﻿#include <iostream>
+﻿#ifndef HEADER_H
+#define HEADER_H 
+
+#include <iostream>
 #include <map> 
 #include <array> 
 #include <vector>
 #include <cstdint>
 
-using namespace std; 
-using reception_map = map<bool, char>; 
+using namespace std;
+using reception_map = map<int, char>;
+//1 2 3 4 corresponding to each direction
+
+//a grid, keep track of what's at each position 
+//if an occupied position is hit, swap it with the new letter 
+//12 x 12 grid 
+//can't go same direction twice in a row, cant use same letter twice in a row
+//goal is to spell SAKURA in some way 
 
 
-#ifndef INPUT_H
-#define INPUT_H 
+extern char coordinates[12][12];  //default is full x's, x = empty 
+
 
 class Input
 {
-public: 
-
-	reception_map get_input();
+public:
+    reception_map get_input();
 };
 
-const array<char, 6> default_letters =
+const array<char, 6> valid_letters =
 {
-	'S', 'A', 'K', 'U', 'R', 'A'
+    'S', 'A', 'K', 'U', 'R', 'A'
 };
 
-//store past inputs 
-//max round num is 100 
-extern uint8_t round_num; 
-extern vector<reception_map> past_inputs; 
-
-
+extern uint8_t round_num;
+extern vector<reception_map> past_inputs;
 
 #endif
-

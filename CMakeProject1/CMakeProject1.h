@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <map> 
+#include <array> 
 
 using namespace std; 
 
@@ -14,7 +15,7 @@ public:
 	map<bool, char> get_input();
 };
 
-const char default_letters[6] =
+const array<char, 6> default_letters =
 {
 	'S', 'A', 'K', 'U', 'R', 'A'
 };

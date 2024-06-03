@@ -26,7 +26,7 @@ class Sorting
 {
 public:
 
-    std::vector<char> remaining_letters;
+    vector<char> remaining_letters;
 
 
     void reinitialize()
@@ -34,7 +34,7 @@ public:
         // Clear the remaining_letters vector of any existing members
         remaining_letters.clear();
         // Copy the contents of default_letters into remaining_letters
-        remaining_letters.insert(remaining_letters.end(), default_letters, default_letters + 6);
+        remaining_letters.insert(remaining_letters.end(), default_letters.begin(), default_letters.end());
     };
 };
 

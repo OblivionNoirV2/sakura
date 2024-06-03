@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
+
 using namespace std;
 
 //this will actually return a char and a bool (left or right) in map form, not just a char 
@@ -17,7 +18,11 @@ map<bool, char> Input::get_input() //first get user input, then compare it to de
         letter = toupper(letter); 
 
         //check if the letter is in the default set 
-
+        if (find(begin(default_letters), end(default_letters), letter) != end(default_letters))
+        {
+            cout << "found letter" << endl; 
+            is_input_valid = true; 
+        }
 
 
     }

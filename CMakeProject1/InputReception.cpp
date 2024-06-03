@@ -6,7 +6,7 @@
 using namespace std;
 
 //this will actually return a char and a bool (left or right) in map form, not just a char 
-map<bool, char> Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
+reception_map Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false; 
     char letter; 
@@ -31,7 +31,7 @@ map<bool, char> Input::get_input() //first get user input, then compare it to de
 
     
 
-    map<bool, char> placeholder; 
+    reception_map placeholder; 
     return placeholder;
 
     

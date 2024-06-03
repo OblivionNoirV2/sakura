@@ -5,6 +5,7 @@
 #include <cstdint>
 
 using namespace std; 
+using reception_map = map<bool, char>; 
 
 
 #ifndef INPUT_H
@@ -14,7 +15,7 @@ class Input
 {
 public: 
 
-	map<bool, char> get_input();
+	reception_map get_input();
 };
 
 const array<char, 6> default_letters =
@@ -24,12 +25,8 @@ const array<char, 6> default_letters =
 
 //store past inputs 
 //max round num is 100 
-uint8_t round_num = 1; 
-vector<map<char, bool>>; 
-
-
-
-
+extern uint8_t round_num; 
+extern vector<reception_map> past_inputs; 
 
 
 

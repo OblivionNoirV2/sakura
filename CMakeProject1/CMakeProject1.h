@@ -18,7 +18,6 @@ using reception_map = map<int, char>;
 //goal is to spell SAKURA in some way 
 
 
-extern char coordinates[12][12];  //default is full x's, x = empty 
 
 
 class Input
@@ -34,5 +33,5 @@ const array<char, 6> valid_letters =
 
 extern uint8_t round_num;
 extern vector<reception_map> past_inputs;
-
+extern char coordinates[12][12]; 
 #endif

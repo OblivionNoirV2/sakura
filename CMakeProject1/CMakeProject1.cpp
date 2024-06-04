@@ -29,7 +29,22 @@ public:
 
     void reinitialize() //reset the grid 
     {
+
         //fill coordinates with x 
+        //for tracking, lets give each square a number 
+        int current_position = 0;  
+        cout << sizeof(coordinates) << endl; //proves it can access it 
+        
+
+        /*for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; i < 12; j++)
+            {
+                coordinates[i][j] = 'x';
+                //current_position += 1; 
+                //cout << current_position << endl; 
+            }
+        */
 
     };
 };
@@ -41,9 +56,8 @@ int main()
 {
     
     Sorting sorting;
-    sorting.reinitialize();
 
-    //sorting.reinitialize();
+    sorting.reinitialize();
     Input input;
     reception_map recieved_input = input.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";

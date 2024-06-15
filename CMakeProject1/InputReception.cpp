@@ -5,9 +5,18 @@
 
 using namespace std;
 
+void Input::set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid)
+{
+    previous_letter = letter;
+    is_input_valid = true;
+};
+
 reception_map Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
-    bool is_input_valid = false; 
+    bool is_input_valid = false;
+
+
+
     char letter; 
     char previous_letter = '\0'; 
     while (!is_input_valid) 
@@ -23,10 +32,9 @@ reception_map Input::get_input() //first get user input, then compare it to defa
             cout << "prev: " << previous_letter << endl;
             if (letter != previous_letter) //check if it was the prev 
             {
-                previous_letter = letter;
-                is_input_valid = true; //remember to reset this after the input is done 
-              
-
+               //remember to reset this after the input is done 
+                set_prev_and_validity(previous_letter, letter, is_input_valid);
+       
             }
             else
             {

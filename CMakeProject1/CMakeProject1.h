@@ -24,6 +24,7 @@ class Input
 {
 public:
     reception_map get_input();
+    void set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid);
 };
 
 const array<char, 6> valid_letters =

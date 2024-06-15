@@ -5,12 +5,11 @@
 
 using namespace std;
 
-//this will actually return a char and a bool (left or right) in map form, not just a char 
 reception_map Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false; 
     char letter; 
-
+    char previous_letter = '\0'; 
     while (!is_input_valid) 
     {
         cout << "Enter a letter" << "\n"; 
@@ -21,7 +20,18 @@ reception_map Input::get_input() //first get user input, then compare it to defa
         if (find(begin(valid_letters), end(valid_letters), letter) != end(valid_letters))
         {
             cout << "found letter" << endl; 
-            is_input_valid = true; //remember to reset this after the input is done 
+            cout << "prev: " << previous_letter << endl;
+            if (letter != previous_letter) //check if it was the prev 
+            {
+                previous_letter = letter;
+                is_input_valid = true; //remember to reset this after the input is done 
+              
+
+            }
+            else
+            {
+                cout << "Cannot use the same letter as last turn!" << endl; 
+            }
         }
         else
         {
@@ -30,6 +40,7 @@ reception_map Input::get_input() //first get user input, then compare it to defa
 
             
     }
+    cout << "new prev" << letter << endl; 
 
     int chosen_direction; //up down left right, 1 2 3 4 
 

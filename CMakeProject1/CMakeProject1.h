@@ -8,7 +8,7 @@
 #include <cstdint>
 
 using namespace std;
-using reception_map = map<int, char>;
+using reception_map = map<int, char>; //coordinates 
 //1 2 3 4 corresponding to each direction
 
 //a grid, keep track of what's at each position 
@@ -32,6 +32,8 @@ const array<char, 6> valid_letters =
 };
 
 extern uint8_t round_num;
-extern vector<reception_map> past_inputs;
+extern vector<reception_map> past_inputs_combined;
+extern char previous_letter; 
+extern int previous_direction;
 extern char coordinates[12][12]; 
 #endif

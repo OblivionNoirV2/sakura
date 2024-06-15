@@ -11,6 +11,12 @@ void Input::set_prev_and_validity(char& previous_letter, char letter, bool& is_i
     is_input_valid = true;
 };
 
+void Input::message(string msg)
+{
+    cout << msg << endl;
+
+};
+
 reception_map Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false;
@@ -30,20 +36,13 @@ reception_map Input::get_input() //first get user input, then compare it to defa
         {
             cout << "found letter" << endl; 
             cout << "prev: " << previous_letter << endl;
-            if (letter != previous_letter) //check if it was the prev 
-            {
-               //remember to reset this after the input is done 
-                set_prev_and_validity(previous_letter, letter, is_input_valid);
-       
-            }
-            else
-            {
-                cout << "Cannot use the same letter as last turn!" << endl; 
-            }
+            letter != previous_letter ? 
+                set_prev_and_validity(previous_letter, letter, is_input_valid) :  //remember to reset validity after the input is done 
+                message("Cannot use the same letter as last turn!");     
         }
         else
         {
-            cout << "Valid inputs are s, a, k, u, r, a" << '\n' << endl; 
+            message("Valid inputs are s, a, k, u, r, a");
         }
 
             

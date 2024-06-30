@@ -21,7 +21,7 @@ using namespace std;
 //segments (ie SA) will be stored and linked together
 
 
-
+char coordinates[12][12];
 class Sorting
 {
 public:
@@ -32,21 +32,31 @@ public:
 
         //fill coordinates with x 
         //for tracking, lets give each square a number 
-        int current_position = 0;  
+        int current_position = 0;
+        for (int i = 0; i < 12; ++i)
+        {
+            for (int j = 0; j < 12; ++j)
+            {
+                coordinates[i][j] = 'x'; // you can initialize with any value you need
+            }
+        }
         cout << sizeof(coordinates) << endl; //proves it can access it 
+
+        for (int i = 0; i < 12; ++i)
+        {
+            for (int j = 0; j < 12; ++j)
+            {
+                cout << coordinates[i][j] << ' ';
+            }
+            cout << endl;
+        }
         
 
-        /*for (int i = 0; i < 12; i++)
-        {
-            for (int j = 0; i < 12; j++)
-            {
-                coordinates[i][j] = 'x';
-                //current_position += 1; 
-                //cout << current_position << endl; 
-            }
-        */
-
     };
+
+
+
+
 };
 
 

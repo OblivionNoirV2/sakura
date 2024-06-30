@@ -36,8 +36,10 @@ reception_map Input::get_input() //first get user input, then compare it to defa
         {
             cout << "found letter" << endl; 
             cout << "prev: " << previous_letter << endl;
-            letter != previous_letter ? 
-                set_prev_and_validity(previous_letter, letter, is_input_valid) :  //remember to reset validity after the input is done 
+            letter != previous_letter 
+                ? 
+                set_prev_and_validity(previous_letter, letter, is_input_valid) 
+                :  //remember to reset validity after the input is done 
                 message("Cannot use the same letter as last turn!");     
         }
         else

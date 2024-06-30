@@ -28,6 +28,8 @@ public:
     void message(string msg);
 };
 
+//print grid func here 
+
 const array<char, 6> valid_letters =
 {
     'S', 'A', 'K', 'U', 'R', 'A'

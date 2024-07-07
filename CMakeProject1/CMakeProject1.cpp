@@ -50,10 +50,23 @@ public:
     };
 };
 
+bool start_game() {
+    cout << "test" << endl;
 
+    return false; 
+
+}
 
 int main()
 {
+    while (start_game() == false)
+    {
+        cout << "test2" << endl;
+        break; 
+
+    };
+  
+   
     
     Sorting sorting;
 

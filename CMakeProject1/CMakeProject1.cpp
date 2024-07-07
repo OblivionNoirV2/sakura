@@ -51,6 +51,11 @@ public:
     };
 };
 
+string display_message(string message)
+{
+    return message; 
+}
+
 bool start_game() //returns true when game is started 
 {
 
@@ -68,18 +73,31 @@ bool start_game() //returns true when game is started
     }
     else
     {
-        cout << "invalid input" << endl; 
-        start_game();
+        cout << display_message("invalid input") << endl; //make this a global function that takes in a msg 
+        start_game(); //try again
     }
     begin_var = tolower(begin_var);
 
-    //check validity 
-    /*if (begin_var != )
+    //check validity and act according to input 
+    switch (begin_var)
     {
+        case 's':
+            //return true
+            break; 
+        case 'x': 
+            //exit 
+            break;
+        case 'e': 
+            //display how the game works
+            break; 
+        default: 
+            //input is invalid, try again 
+            cout << display_message("invalid input, please enter S, X or E") << endl;
+            start_game();
 
-    }*/
+    }
 
-    cout << "final begin var" << " " << begin_var << endl; 
+    //cout << "final begin var" << " " << begin_var << endl; 
 
 
     return false; 

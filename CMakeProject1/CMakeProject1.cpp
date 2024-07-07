@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm> // For std::copy
 #include <iostream>
+#include <array> 
 using namespace std;
 
 //SAKURA 
@@ -50,8 +51,36 @@ public:
     };
 };
 
-bool start_game() {
-    cout << "test" << endl;
+bool start_game() //returns true when game is started 
+{
+
+    char begin_var; 
+    //cout << "test" << endl;
+    cout << "S for start, X for exit or E for explanation" << endl; 
+    cin >> begin_var; 
+    cout << "input is" << " " << begin_var << endl;
+
+    //ensure it is a character 
+    if (isalpha(begin_var))
+    {
+        cout << "yay you entered a character" << endl; 
+
+    }
+    else
+    {
+        cout << "invalid input" << endl; 
+        start_game();
+    }
+    begin_var = tolower(begin_var);
+
+    //check validity 
+    /*if (begin_var != )
+    {
+
+    }*/
+
+    cout << "final begin var" << " " << begin_var << endl; 
+
 
     return false; 
 

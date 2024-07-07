@@ -1,0 +1,20 @@
+1. prompt user to start game
+
+2. Upon yes, start timer in seconds
+
+3. get user input as a letter and a direction.
+
+4. Validate this input. No using previous letter, no using previous direction.
+
+5. Moves 1 coordinate in the given direction from the last position, or 0,0 if first move.
+
+6. Store this coordinate on the grid (12 arrays of 12). if the position is occupied, it gets swapped. Notify player of this if it occurs. For testing purposes, print the grid each time. Add 1 to turn counter.
+
+7. Check for victory conditions, which is if the word SAKURA is spelled out diagonally, vertically, or horizontally on said grid. Can be upside down. Maybe do this by checking one letter at a time starting from “s” and “a”.
+
+8. If victory, game is done. Print turn counter and score. Score = 100000/(coordinates filled + turns taken + (time in seconds(0.25))) rounded to the tenth.
+
+so if we had 40 coords filled(filled means not an x), 22 turns and it took 600 seconds it’d be:
+100000/(40 + 22 + (600(0.25))) = 471.7
+
+9. If no victory, check if max turns has been reached (lets say 50). If not, repeat from step 4.

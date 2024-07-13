@@ -20,7 +20,7 @@ using reception_map = map<int, char>; //coordinates
 
 
 
-class Input
+class input
 {
 public:
     reception_map get_input();
@@ -35,6 +35,7 @@ const array<char, 6> valid_letters =
     'S', 'A', 'K', 'U', 'R', 'A'
 };
 
+int timer(); 
 extern uint8_t round_num;
 extern vector<reception_map> past_inputs_combined;
 extern char previous_letter; 

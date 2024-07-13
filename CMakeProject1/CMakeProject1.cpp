@@ -119,8 +119,8 @@ int main()
     Sorting sorting;
 
     sorting.reinitialize();
-    Input input;
-    reception_map recieved_input = input.get_input(); //this will be a hash with the chosen char and direction to place it 
+    input input_2;
+    reception_map recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";
 
     return 0;

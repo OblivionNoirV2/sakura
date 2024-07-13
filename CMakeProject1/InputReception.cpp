@@ -5,19 +5,19 @@
 
 using namespace std;
 
-void Input::set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid)
+void input::set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid)
 {
     previous_letter = letter;
     is_input_valid = true;
 };
 
-void Input::message(string msg)
+void input::message(string msg)
 {
     cout << msg << endl;
 
 };
 
-reception_map Input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
+reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false;
 

@@ -51,7 +51,7 @@ public:
     };
 };
 
-string display_message(string message)
+string display_message(string message) //move this to header 
 {
     return message; 
 }
@@ -82,10 +82,10 @@ bool start_game() //returns true when game is started
     switch (begin_var)
     {
         case 's':
-            //return true
+            return true; 
             break; 
         case 'x': 
-            //exit 
+            exit(0); 
             break;
         case 'e': 
             //display how the game works
@@ -112,6 +112,7 @@ int main()
         break; 
 
     };
+    cout << "made it out of intro loop" << endl; 
   
    
     

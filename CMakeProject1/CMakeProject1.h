@@ -36,6 +36,7 @@ const array<char, 6> valid_letters =
 };
 
 int timer(); 
+
 extern uint8_t round_num;
 extern vector<reception_map> past_inputs_combined;
 extern char previous_letter; 

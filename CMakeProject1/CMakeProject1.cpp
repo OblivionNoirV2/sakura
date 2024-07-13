@@ -104,8 +104,18 @@ bool start_game() //returns true when game is started
 
 }
 
+int timer() //want this to display the time on a second cmd window 
+{
+    cout << "timer test" << endl;
+    return 0;
+
+};
+
 int main()
 {
+
+    timer();
+
     while (start_game() == false)
     {
         cout << "test2" << endl;

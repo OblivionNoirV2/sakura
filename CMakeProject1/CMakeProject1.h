@@ -6,6 +6,9 @@
 #include <array> 
 #include <vector>
 #include <cstdint>
+#include <chrono>
+#include <thread>
+#include <ctime>
 
 using namespace std;
 using reception_map = map<int, char>; //coordinates 
@@ -30,12 +33,15 @@ public:
 
 //print grid func here 
 
-const array<char, 6> valid_letters =
+const array<char, 6> valid_letters = //this does not change hence the implementation
 {
     'S', 'A', 'K', 'U', 'R', 'A'
 };
 
-int timer(); 
+void stopwatch();
+
+extern int seconds; 
+
 
 extern uint8_t round_num;
 extern vector<reception_map> past_inputs_combined;

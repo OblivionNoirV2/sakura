@@ -24,7 +24,7 @@ class Sorting
 {
 public:
 
-
+    //all this is temp
     void reinitialize() //reset the grid 
     {
 
@@ -104,34 +104,30 @@ bool start_game() //returns true when game is started
 
 }
 
-int timer() //want this to display the time on a second cmd window 
+int seconds = 0; 
+void stopwatch() 
 {
-    cout << "timer test" << endl;
-    return 0;
-
-};
+    cout << "starting stopwatch" << endl;
+ 
+    while (true)
+    {
+        this_thread::sleep_for(chrono::seconds(1));
+        ++seconds;
+        //cout << seconds << " seconds passed" << endl;
+    }
+}
 
 int main()
 {
 
-    timer();
+    thread stopwatch_thread(stopwatch);//stopwatch on thread #2
 
-    while (start_game() == false)
-    {
-        cout << "test2" << endl;
-        break; 
-
-    };
-    cout << "made it out of intro loop" << endl; 
-  
-   
-    
     Sorting sorting;
 
     sorting.reinitialize();
     input input_2;
     reception_map recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";
-
+    stopwatch_thread.join();
     return 0;
 }

@@ -38,6 +38,11 @@ const array<char, 6> valid_letters = //this does not change hence the implementa
     'S', 'A', 'K', 'U', 'R', 'A'
 };
 
+const array<char, 4> valid_directions =
+{
+    'W', 'A', 'S', 'D'
+};
+
 void stopwatch();
 
 extern int seconds; 

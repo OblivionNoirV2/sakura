@@ -25,6 +25,10 @@ reception_map input::get_input() //first get user input, then compare it to defa
 
     char letter; 
     char previous_letter = '\0'; 
+
+    char direction; 
+    char previous_direction = '\0';
+
     while (!is_input_valid) 
     {
         cout << "Enter a letter" << "\n"; 
@@ -52,6 +56,8 @@ reception_map input::get_input() //first get user input, then compare it to defa
     cout << "new prev" << letter << endl; 
 
     int chosen_direction; //up down left right, 1 2 3 4 
+
+    //now that that's validated get the direction 
 
     
 

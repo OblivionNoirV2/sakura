@@ -16,18 +16,16 @@ void input::message(string msg)
     cout << msg << endl;
 
 };
+//default values, cannot be in the function or they'll get reset every time
+char previous_letter = '\0';
+char previous_direction = '\0';
 
 reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_input_valid = false;
 
-
-
     char letter; 
-    char previous_letter = '\0'; 
-
     char direction; 
-    char previous_direction = '\0';
 
     while (!is_input_valid) 
     {
@@ -50,15 +48,18 @@ reception_map input::get_input() //first get user input, then compare it to defa
         {
             message("Valid inputs are s, a, k, u, r, a");
         }
-
-            
     }
     cout << "new prev" << letter << endl; 
-
-    int chosen_direction; //up down left right, 1 2 3 4 
+    //get_input(); //proves that letter tracking works
 
     //now that that's validated get the direction 
 
+    int chosen_direction; //up left down right, wasd
+    cout << "Enter a direction (WASD)" << endl; //this should work pretty much the same as with the letters, validate the set 
+
+
+
+ 
     
 
     reception_map placeholder; 

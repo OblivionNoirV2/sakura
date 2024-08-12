@@ -43,6 +43,7 @@ const array<char, 4> valid_directions =
     'W', 'A', 'S', 'D'
 };
 
+
 void stopwatch();
 
 extern int seconds; 
@@ -51,6 +52,6 @@ extern int seconds;
 extern uint8_t round_num;
 extern vector<reception_map> past_inputs_combined;
 extern char previous_letter; 
-extern int previous_direction;
+extern char previous_direction;
 extern char coordinates[12][12]; 
 #endif

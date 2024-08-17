@@ -16,6 +16,12 @@ void input::message(string msg)
     cout << msg << endl;
 
 };
+
+void up_input(char& txt) //global
+{
+    txt = toupper(txt);
+}; 
+
 //default values, cannot be in the function or they'll get reset every time
 char previous_letter = '\0';
 char previous_direction = '\0';
@@ -23,15 +29,18 @@ char previous_direction = '\0';
 reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_letter_valid = false;
+    bool is_direction_valid = false; 
 
     char letter; 
     char direction; 
 
     while (!is_letter_valid) 
     {
-        cout << "Enter a letter" << "\n"; 
+        message("Enter a letter"); 
+
         cin >> letter; 
-        letter = toupper(letter); 
+
+        up_input(letter);
 
         //check if the letter is in the default set 
         if (find(begin(valid_letters), end(valid_letters), letter) != end(valid_letters))
@@ -53,7 +62,11 @@ reception_map input::get_input() //first get user input, then compare it to defa
     //get_input(); //proves that letter tracking works
 
     //now that that's validated get the direction 
-    //while()
+    while (!is_direction_valid)
+    {
+        message("Enter a direction(WASD)"); 
+        
+    }
 
 
     int chosen_direction; //up left down right, wasd

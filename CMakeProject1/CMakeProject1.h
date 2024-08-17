@@ -27,7 +27,7 @@ class input
 {
 public:
     reception_map get_input();
-    void set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid);
+    void set_prev_letter(char& previous_letter, char letter);
     void message(string msg);
 };
 

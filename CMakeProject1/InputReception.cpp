@@ -5,10 +5,10 @@
 
 using namespace std;
 
-void input::set_prev_and_validity(char& previous_letter, char letter, bool& is_input_valid)
+void input::set_prev_letter(char& previous_letter, char letter)
 {
     previous_letter = letter;
-    is_input_valid = true;
+    //is_input_valid = true;
 };
 
 void input::message(string msg)
@@ -22,12 +22,12 @@ char previous_direction = '\0';
 
 reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
-    bool is_input_valid = false;
+    bool is_letter_valid = false;
 
     char letter; 
     char direction; 
 
-    while (!is_input_valid) 
+    while (!is_letter_valid) 
     {
         cout << "Enter a letter" << "\n"; 
         cin >> letter; 
@@ -40,7 +40,7 @@ reception_map input::get_input() //first get user input, then compare it to defa
             cout << "prev: " << previous_letter << endl;
             letter != previous_letter 
                 ? 
-                set_prev_and_validity(previous_letter, letter, is_input_valid) 
+                set_prev_letter(previous_letter, letter) 
                 :  //remember to reset validity after the input is done 
                 message("Cannot use the same letter as last turn!");     
         }
@@ -53,6 +53,8 @@ reception_map input::get_input() //first get user input, then compare it to defa
     //get_input(); //proves that letter tracking works
 
     //now that that's validated get the direction 
+    //while()
+
 
     int chosen_direction; //up left down right, wasd
     cout << "Enter a direction (WASD)" << endl; //this should work pretty much the same as with the letters, validate the set 

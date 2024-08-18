@@ -8,6 +8,7 @@ using namespace std;
 void input::set_prev_letter(char& previous_letter, char letter)
 {
     previous_letter = letter;
+
     //is_input_valid = true;
 };
 
@@ -47,11 +48,17 @@ reception_map input::get_input() //first get user input, then compare it to defa
         {
             cout << "found letter" << endl; 
             cout << "prev: " << previous_letter << endl;
-            letter != previous_letter 
-                ? 
-                set_prev_letter(previous_letter, letter) 
-                :  //remember to reset validity after the input is done 
-                message("Cannot use the same letter as last turn!");     
+            if (letter != previous_letter)
+            {
+                set_prev_letter(previous_letter, letter);
+                is_letter_valid = true;
+
+            }
+            else
+            {
+                message("Cannot use the same letter as last turn!");
+
+            };
         }
         else
         {
@@ -62,20 +69,17 @@ reception_map input::get_input() //first get user input, then compare it to defa
     //get_input(); //proves that letter tracking works
 
     //now that that's validated get the direction 
-    while (!is_direction_valid)
+    while (!is_direction_valid)  //up left down right, wasd
     {
-        message("Enter a direction(WASD)"); 
-        
-    }
+        message("Enter a direction(WASD)");
 
+        cin >> direction;
 
-    int chosen_direction; //up left down right, wasd
-    cout << "Enter a direction (WASD)" << endl; //this should work pretty much the same as with the letters, validate the set 
+        up_input(direction);
+        cout << "direction:" << direction << endl;
+        is_direction_valid = true;
 
-
-
- 
-    
+    };
 
     reception_map placeholder; 
     return placeholder;

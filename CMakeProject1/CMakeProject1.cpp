@@ -17,40 +17,6 @@ using namespace std;
 //A -> S or K or R
 
 
-
-
-/*char coordinates[12][12];
-class Sorting
-{
-public:
-
-    //all this is temp
-    void reinitialize() //reset the grid 
-    {
-
-        //fill coordinates with x 
-        //for tracking, lets give each square a number 
-        int current_position = 0;
-        for (int i = 0; i < 12; ++i)
-        {
-            for (int j = 0; j < 12; ++j)
-            {
-                coordinates[i][j] = 'x'; // you can initialize with any value you need
-            }
-        }
-        cout << sizeof(coordinates) << endl; //proves it can access it 
-
-        for (int i = 0; i < 12; ++i) //make this into a function 
-        {
-            for (int j = 0; j < 12; ++j)
-            {
-                cout << coordinates[i][j] << ' ';
-            }
-            cout << endl;
-        }
-    };
-};*/
-
 string display_message(string message) //move this to header 
 {
     return message; 

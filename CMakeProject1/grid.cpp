@@ -4,25 +4,31 @@
 //start by creating reference points for each row split, maybe with a map
 
 
-using namespace std; 
-//#include <map>
+
+#include "CMakeProject1.h"
 #include<array>
 #include <variant>
-
+using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
 
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 
-for (auto& element : mixed_array) //make this a function
+void grid_management::reset_grid()
 {
-    element = 0;  //init to all zeros 
+    cout << "inside function" << endl; 
+    for (auto& element : mixed_grid) 
+    {
+        element = 0;
+        cout << "in loop" << endl;
+    }
 }
 
 
-int get_row_or_column()
+/*int get_row_or_column()
 {
 
-}
+}*/
 //put all this shit in a class
+

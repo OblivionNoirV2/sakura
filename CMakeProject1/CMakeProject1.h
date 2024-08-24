@@ -32,6 +32,14 @@ public:
     void message(string msg);
 };
 
+class grid_management
+{
+public: 
+    void reset_grid(); 
+    int get_row_or_column(int cell_num); 
+
+};
+
 //print grid func here 
 
 const array<char, 6> valid_letters = //this does not change hence the implementation

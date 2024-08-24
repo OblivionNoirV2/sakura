@@ -19,7 +19,7 @@ using namespace std;
 
 
 
-char coordinates[12][12];
+/*char coordinates[12][12];
 class Sorting
 {
 public:
@@ -49,7 +49,7 @@ public:
             cout << endl;
         }
     };
-};
+};*/
 
 string display_message(string message) //move this to header 
 {
@@ -105,26 +105,26 @@ bool start_game() //returns true when game is started
 }
 
 int seconds = 0; 
-void stopwatch() 
+void stopwatch()
 {
-    cout << "starting stopwatch" << endl;
- 
+    //cout << "starting stopwatch" << endl;
+
     while (true)
     {
         this_thread::sleep_for(chrono::seconds(1));
         ++seconds;
         //cout << seconds << " seconds passed" << endl;
     }
-}
+};
 
 int main()
 {
 
     thread stopwatch_thread(stopwatch);//stopwatch on thread #2
 
-    Sorting sorting;
+    //Sorting sorting;
 
-    sorting.reinitialize();
+    //sorting.reinitialize();
     input input_2;
     reception_map recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";

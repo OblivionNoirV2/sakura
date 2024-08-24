@@ -15,10 +15,10 @@ using namespace std;
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 
-void grid_management::reset_grid()
+void grid_management::reset_grid() //reset to all 0s, this should happen first
 {
     cout << "inside function" << endl; 
-    for (auto& element : mixed_grid) 
+    for (auto& element : mixed_grid) //and this should print as a 13 x 13 grid 
     {
         element = 0;
         cout << "in loop" << endl;

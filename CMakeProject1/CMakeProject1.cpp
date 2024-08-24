@@ -91,6 +91,9 @@ int main()
     //Sorting sorting;
 
     //sorting.reinitialize();
+    grid_management grid_management_2;
+    grid_management_2.reset_grid();
+
     input input_2;
     reception_map recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";

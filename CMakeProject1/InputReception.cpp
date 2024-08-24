@@ -105,8 +105,6 @@ reception_map input::get_input() //first get user input, then compare it to defa
 
     };
 
-    grid_management grid_management_2;
-    grid_management_2.reset_grid();
 
     reception_map placeholder; 
     return placeholder;

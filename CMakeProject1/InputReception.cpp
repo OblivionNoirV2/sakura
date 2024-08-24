@@ -12,6 +12,11 @@ void input::set_prev_letter(char& previous_letter, char letter)
     //is_input_valid = true;
 };
 
+void input::set_prev_direction(char& previous_direction, char direction)
+{
+
+}
+
 void input::message(string msg)
 {
     cout << msg << endl;
@@ -77,7 +82,20 @@ reception_map input::get_input() //first get user input, then compare it to defa
 
         up_input(direction);
         cout << "direction:" << direction << endl;
-        is_direction_valid = true;
+        //is_direction_valid = true;
+
+        if (find(begin(valid_directions), end(valid_directions), direction) != end(valid_directions)) //if it was not found by the end of the iterations, it's not in the set
+        {
+            cout << "found direction" << endl; 
+            cout << "prev: " << previous_direction << endl; 
+            if (direction != previous_direction)
+            {
+                
+            }
+
+
+
+        }
 
     };
 

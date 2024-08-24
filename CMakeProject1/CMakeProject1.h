@@ -28,6 +28,7 @@ class input
 public:
     reception_map get_input();
     void set_prev_letter(char& previous_letter, char letter);
+    void set_prev_direction(char& previous_direction, char direction); 
     void message(string msg);
 };
 

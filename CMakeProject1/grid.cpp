@@ -21,7 +21,7 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
     for (auto& element : mixed_grid) //and this should print as a 13 x 13 grid 
     {
         element = 0;
-        cout << "in loop" << endl;
+        cout << get<int>(element) << endl;
     }
 }
 

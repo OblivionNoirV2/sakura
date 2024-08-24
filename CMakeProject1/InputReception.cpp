@@ -14,8 +14,8 @@ void input::set_prev_letter(char& previous_letter, char letter)
 
 void input::set_prev_direction(char& previous_direction, char direction)
 {
-
-}
+    previous_direction = direction;
+};
 
 void input::message(string msg)
 {
@@ -88,13 +88,19 @@ reception_map input::get_input() //first get user input, then compare it to defa
         {
             cout << "found direction" << endl; 
             cout << "prev: " << previous_direction << endl; 
-            if (direction != previous_direction)
+            if (direction != previous_direction) //not equal means valid
             {
-                
+                set_prev_direction(previous_direction, direction);
+                is_direction_valid = true;
             }
-
-
-
+            else
+            {
+                message("Cannot use the same direction as last turn!");
+            };
+        }
+        else
+        {
+            message("Valid inputs are w, a, s, d"); 
         }
 
     };

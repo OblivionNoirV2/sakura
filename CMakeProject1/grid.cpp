@@ -1,7 +1,6 @@
 //this is going to be a grid made up of 13 arrays of 13 (because 7 provides a middle for 0,0)
 //ranges determine which row it falls in, ie (cell 14-25 = row 2) then count up from where that row starts 
 
-//start by creating reference points for each row split, maybe with a map
 
 
 
@@ -12,18 +11,36 @@ using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
 
+
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 
 void grid_management::reset_grid() //reset to all 0s, this should happen first
 {
-    cout << "inside function" << endl; 
-    for (auto& element : mixed_grid) //and this should print as a 13 x 13 grid 
+    int cell_number = 0; // Start numbering cells from 0, for consistency
+
+    for (auto& element : mixed_grid) //for formatting, add 2 extra spaces if the number is single digit and 1 if it's double digit 
     {
-        element = 0;
-        cout << get<int>(element) << endl;
+        // Reset the element to the current cell number
+        if (holds_alternative<int>(element))
+        {
+            int& int_value = get<int>(element); //reference to the int
+            int_value = cell_number++; //assign and increment the cell number
+
+            cout << int_value << " ";
+
+            // Add a newline after every 13 elements to form a 13x13 grid
+            if (cell_number % 13 == 0)
+            {
+                cout << endl;
+            }
+        }
+        else //this is where non-ints will be taken care of 
+        {
+            cout << "Not an int" << " "; //placeholder
+        }
     }
-}
+};
 
 
 /*int get_row_or_column()

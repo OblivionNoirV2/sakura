@@ -17,11 +17,11 @@ array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letter
 
 void grid_management::reset_grid() //reset to all 0s, this should happen first
 {
-    int cell_number = 0; // Start numbering cells from 0, for consistency
+    int cell_number = 1; //use 1 because we DO need a middle number (85) to use as 0,0
 
     for (auto& element : mixed_grid) //for formatting, add 2 extra spaces if the number is single digit and 1 if it's double digit 
     {
-        // Reset the element to the current cell number
+        //reset the element to the current cell number
         if (holds_alternative<int>(element))
         {
             int& int_value = get<int>(element); //reference to the int
@@ -29,8 +29,8 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
 
             cout << int_value << " ";
 
-            // Add a newline after every 13 elements to form a 13x13 grid
-            if (cell_number % 13 == 0)
+            //add a newline after every 13 elements to form a 13x13 grid
+            if (cell_number % 13 == 1)
             {
                 cout << endl;
             }

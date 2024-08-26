@@ -7,11 +7,21 @@
 #include "CMakeProject1.h"
 #include<array>
 #include <variant>
+#include <cmath> 
 using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
 
+int digit_checker(int number)//return number of digits in number
+{
+    //1-9, 10-99, 100+ 
 
+    if (number == 0)
+    {
+        return 1; 
+    }
+
+}
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 

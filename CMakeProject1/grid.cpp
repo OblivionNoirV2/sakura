@@ -16,19 +16,25 @@ int digit_checker(int number)//return number of digits in number
 {
     //1-9, 10-99, 100+ 
 
-    if (number == 0)
+    if (number == 0) //log10 0 is undefined 
     {
-        return 1; 
+        return 1;
     }
+    else
+    {
+        return static_cast<int>(log10(number)) + 1; //log10 returns digits -1, so add an extra 
+    }
+};
 
-}
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 
 void grid_management::reset_grid() //reset to all 0s, this should happen first
 {
     int cell_number = 1; //use 1 because we DO need a middle number (85) to use as 0,0
-
+    int x = 10;
+    int y = digit_checker(x);
+    cout << "y: " << y << endl; 
     for (auto& element : mixed_grid) //for formatting, add 2 extra spaces if the number is single digit and 1 if it's double digit 
     {
         //reset the element to the current cell number

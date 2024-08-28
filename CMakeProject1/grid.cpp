@@ -1,9 +1,6 @@
 //this is going to be a grid made up of 13 arrays of 13 (because 7 provides a middle for 0,0)
 //ranges determine which row it falls in, ie (cell 14-25 = row 2) then count up from where that row starts 
 
-
-
-
 #include "CMakeProject1.h"
 #include<array>
 #include <variant>
@@ -50,7 +47,6 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
             if (cell_number % 13 == 1)
             {
                 cout << "\n\n";
-            
             }
         }
         else //this is where non-ints will be taken care of 

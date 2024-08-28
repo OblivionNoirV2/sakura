@@ -1,6 +1,7 @@
 #include "CMakeProject1.h"
 #include <iostream>
 #include <algorithm>
+#include <tuple>//for storing coords
 
 
 using namespace std;
@@ -31,6 +32,8 @@ void up_input(char& txt) //global
 //default values, cannot be in the function or they'll get reset every time
 char previous_letter = '\0';
 char previous_direction = '\0';
+
+tuple<int, int> current_coordinates = make_tuple(0, 0); //default
 
 reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
@@ -106,7 +109,7 @@ reception_map input::get_input() //first get user input, then compare it to defa
     };
 
 
-    reception_map placeholder; 
+    reception_map placeholder; //so, this needs to hold a direction and a letter. make it a tuple? 
     return placeholder;
 
     

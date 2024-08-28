@@ -36,7 +36,7 @@ class grid_management
 {
 public: 
     void reset_grid(); 
-    int get_row_or_column(int cell_num); 
+    
 
 };
 
@@ -62,5 +62,5 @@ extern uint8_t round_num;
 extern vector<reception_map> past_inputs_combined;//probably not needed
 extern char previous_letter; 
 extern char previous_direction;
-//extern char coordinates[12][12]; 
+
 #endif

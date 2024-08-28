@@ -35,7 +35,7 @@ char previous_direction = '\0';
 
 tuple<int, int> current_coordinates = make_tuple(0, 0); //default
 
-reception_map input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
+reception_tuple input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_letter_valid = false;
     bool is_direction_valid = false; 
@@ -109,7 +109,7 @@ reception_map input::get_input() //first get user input, then compare it to defa
     };
 
 
-    reception_map placeholder; //so, this needs to hold a direction and a letter. make it a tuple? 
+    reception_tuple placeholder = make_tuple('s', 'a'); //letter and direction
     return placeholder;
 
     

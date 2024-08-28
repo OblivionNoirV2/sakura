@@ -9,9 +9,13 @@
 #include <chrono>
 #include <thread>
 #include <ctime>
+#include <tuple>
 
 using namespace std;
-using reception_map = map<int, char>; //coordinates 
+//using reception_map = map<int, char>; //coordinates 
+
+using reception_tuple = tuple <char, char>;
+
 //1 2 3 4 corresponding to each direction
 
 //a grid, keep track of what's at each position 
@@ -26,7 +30,7 @@ using reception_map = map<int, char>; //coordinates
 class input
 {
 public:
-    reception_map get_input();
+    reception_tuple get_input();
     void set_prev_letter(char& previous_letter, char letter);
     void set_prev_direction(char& previous_direction, char direction); 
     void message(string msg);
@@ -59,7 +63,7 @@ extern int seconds;
 
 
 extern uint8_t round_num;
-extern vector<reception_map> past_inputs_combined;//probably not needed
+//extern vector<reception_map> past_inputs_combined;//probably not needed
 extern char previous_letter; 
 extern char previous_direction;
 

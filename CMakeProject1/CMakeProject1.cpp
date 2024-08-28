@@ -95,7 +95,7 @@ int main()
     grid_management_2.reset_grid();
 
     input input_2;
-    reception_map recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
+    reception_tuple recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";
     stopwatch_thread.join();
     return 0;

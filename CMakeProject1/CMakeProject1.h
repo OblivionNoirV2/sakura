@@ -40,7 +40,7 @@ class grid_management
 {
 public: 
     void reset_grid(); 
-    int get_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
+    int calc_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
     current_coordinates_type convert_to_coords();
 };
 
@@ -66,5 +66,8 @@ extern uint8_t round_num;
 //extern vector<reception_map> past_inputs_combined;//probably not needed
 extern char previous_letter; 
 extern char previous_direction;
+
+extern int prev_num; 
+extern int current_num; 
 
 #endif

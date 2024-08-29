@@ -58,6 +58,23 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
 
 int current_num = 85; //default is 85 
 
+/*
+* use the extracted direction to determine how to move
+* to move down a row by 1, it's gonna be +13 
+* to move up a row by 1, it's gonna be -13 
+
+* w = up 1 (row)
+* a = left 1 (cell)
+* s = right 1 (cell)
+* d = down 1 (row)
+*
+* also remember we need to check for edges before making any movements
+*/
+map<char, int> match_to_movement =
+{
+
+};
+
 int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate
 {
     cout << "test letter: " << get<0>(recieved_coordinates) << endl;
@@ -65,22 +82,15 @@ int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates
 
     cout << "current_num: " << current_num << endl;
 
-    //to move down a row by 1, it's gonna be +13 
-    //to move up a row by 1, it's gonna be -13 
-    /*
-    * w = up 1 (row)
-    * a = left 1 (cell)
-    * s = right 1 (cell)
-    * d = down 1 (row)
-    * 
-    * also remember we need to check for edges before making any movements 
-    */
+
 
     //first extract the direction 
     char extracted_direction = get<1>(recieved_coordinates); 
 
     cout << "extracted direction: " << extracted_direction << endl; 
     //first we need to know what number we're on. Default is 85. 
+
+    //use a map instead of a switch to avoid writing the same type of line over and over 
     return 0;
 
 };

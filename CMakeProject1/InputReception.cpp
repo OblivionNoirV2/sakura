@@ -33,9 +33,9 @@ void up_input(char& txt) //global
 char previous_letter = '\0';
 char previous_direction = '\0';
 
-tuple<int, int> current_coordinates = make_tuple(0, 0); //default
+//tuple<int, int> current_coordinates = make_tuple(0, 0); //default
 
-reception_tuple input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
+reception_tuple_type input::get_input() //first get user input, then compare it to default letters to ensure it is valid 
 {
     bool is_letter_valid = false;
     bool is_direction_valid = false; 
@@ -108,13 +108,9 @@ reception_tuple input::get_input() //first get user input, then compare it to de
 
     };
 
-
-    reception_tuple let_and_dir = make_tuple(letter, direction); //letter and direction
-    cout << "letter: " << get<0>(let_and_dir) << endl;
-    cout << "direction: " << get<1>(let_and_dir) << endl;
+    reception_tuple_type let_and_dir = make_tuple(letter, direction); //letter and direction
     return let_and_dir;
 
-    
 }
 
 

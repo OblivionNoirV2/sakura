@@ -95,7 +95,14 @@ int main()
     grid_management_2.reset_grid();
 
     input input_2;
-    reception_tuple recieved_input = input_2.get_input(); //this will be a hash with the chosen char and direction to place it 
+    reception_tuple_type recieved_input = input_2.get_input(); //now we have the input 
+
+    cout << "recieved letter: " << get<0>(recieved_input) << endl;
+    cout << "recieved direction: " << get<1>(recieved_input) << endl;
+
+    //to move down a row by 1, it's gonna be +13 
+    //to up up a row by 1, it's gonna be -13 
+    
     //std::cout << "Guessed Letter: " << guessedLetter << "\n";
     stopwatch_thread.join();
     return 0;

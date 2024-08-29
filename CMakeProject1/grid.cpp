@@ -49,13 +49,22 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
                 cout << "\n\n";
             }
         }
-        else //this is where non-ints will be taken care of 
+        else //not sure if this needs to be here? 
         {
             cout << "Not an int" << " "; //placeholder
         }
     }
 };
 
+int grid_management::get_cell_number() //gets the cell number based on input recieved, which will then be converted to a coordinate
+{
+    return 0;
+};
+
+current_coordinates_type grid_management::convert_to_coords()
+{
+    return make_tuple(1, 1);
+};
 
 /*int get_row_or_column()
 {

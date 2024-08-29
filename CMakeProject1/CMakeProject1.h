@@ -14,7 +14,9 @@
 using namespace std;
 //using reception_map = map<int, char>; //coordinates 
 
-using reception_tuple = tuple <char, char>;
+using reception_tuple_type = tuple<char, char>;
+
+using current_coordinates_type = tuple<int, int>;
 
 //1 2 3 4 corresponding to each direction
 
@@ -25,12 +27,10 @@ using reception_tuple = tuple <char, char>;
 //goal is to spell SAKURA in some way 
 
 
-
-
 class input
 {
 public:
-    reception_tuple get_input();
+    reception_tuple_type get_input();
     void set_prev_letter(char& previous_letter, char letter);
     void set_prev_direction(char& previous_direction, char direction); 
     void message(string msg);
@@ -40,8 +40,8 @@ class grid_management
 {
 public: 
     void reset_grid(); 
-    
-
+    int get_cell_number(); //get cell number, then convert that to a coordinate
+    current_coordinates_type convert_to_coords();
 };
 
 //print grid func here 

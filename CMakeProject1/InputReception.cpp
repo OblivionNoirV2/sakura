@@ -109,7 +109,7 @@ reception_tuple input::get_input() //first get user input, then compare it to de
     };
 
 
-    reception_tuple let_and_dir = make_tuple('s', 'a'); //letter and direction
+    reception_tuple let_and_dir = make_tuple(letter, direction); //letter and direction
     cout << "letter: " << get<0>(let_and_dir) << endl;
     cout << "direction: " << get<1>(let_and_dir) << endl;
     return let_and_dir;

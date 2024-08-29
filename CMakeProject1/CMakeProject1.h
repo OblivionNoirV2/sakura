@@ -40,7 +40,7 @@ class grid_management
 {
 public: 
     void reset_grid(); 
-    int get_cell_number(); //get cell number, then convert that to a coordinate
+    int get_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
     current_coordinates_type convert_to_coords();
 };
 

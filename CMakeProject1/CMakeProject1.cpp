@@ -100,6 +100,8 @@ int main()
     cout << "recieved letter: " << get<0>(recieved_input) << endl;
     cout << "recieved direction: " << get<1>(recieved_input) << endl;
 
+    grid_management_2.get_cell_number(recieved_input);
+
     //to move down a row by 1, it's gonna be +13 
     //to up up a row by 1, it's gonna be -13 
     

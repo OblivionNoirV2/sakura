@@ -56,9 +56,12 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
     }
 };
 
-int grid_management::get_cell_number() //gets the cell number based on input recieved, which will then be converted to a coordinate
+int grid_management::get_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate
 {
+    cout << "test letter: " << get<0>(recieved_coordinates);
+    cout << "test direction: " << get<1>(recieved_coordinates);
     return 0;
+
 };
 
 current_coordinates_type grid_management::convert_to_coords()

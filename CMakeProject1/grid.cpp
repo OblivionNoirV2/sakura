@@ -50,7 +50,7 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
                 cout << "\n\n";
             }
         }
-        else //not sure if this needs to be here? 
+        else //print the char
         {
             cout << "Not an int" << " "; //placeholder
         }
@@ -90,6 +90,8 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     //first extract the direction 
     char extracted_direction = get<1>(recieved_coordinates); 
 
+    char extracted_letter = get<0>(recieved_coordinates); 
+
     cout << "extracted direction: " << extracted_direction << endl; 
     //first we need to know what number we're on. Default is 85. 
 
@@ -100,7 +102,7 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     cout << "fresh num: " << current_pos << endl; 
 
     cout << "move val: " << movement_value << endl; 
-    mod_position();
+    mod_position(extracted_letter);
 
 };
 
@@ -112,7 +114,7 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
 
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 
-void grid_management::mod_position()
+void grid_management::mod_position(char& recieved_letter)
 {
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
@@ -120,6 +122,19 @@ void grid_management::mod_position()
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
 
     cout << "is spot taken: " << is_spot_taken << endl; 
+
+    cout << "recieved letter inside mod pos: " << recieved_letter << endl; 
+
+
+    /*if (is_spot_taken)
+    {
+        //do the swap (char for char) and notify
+    }
+    else
+    {
+        //do the swap (char for int) 
+        mixed_grid[current_pos] = 
+    }*/
 
 };
 /*int get_row_or_column()

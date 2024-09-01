@@ -72,7 +72,10 @@ int current_num = 85; //default is 85
 */
 map<char, int> match_to_movement =
 {
-
+    {'W', -13},
+    {'A', -1},
+    {'S', 13},
+    {'D', 1}
 };
 
 int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate

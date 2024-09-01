@@ -78,15 +78,13 @@ map<char, int> match_to_movement =
     {'D', 1}
 };
 
-
-int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate
+//returns the new cell num 
+void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate
 {
     cout << "test letter: " << get<0>(recieved_coordinates) << endl;
     cout << "test direction: " << get<1>(recieved_coordinates) << endl;
 
     cout << "current_num: " << current_num << endl;
-
-
 
     //first extract the direction 
     char extracted_direction = get<1>(recieved_coordinates); 
@@ -97,13 +95,16 @@ int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates
     //retrieve movement value 
     int movement_value = match_to_movement[extracted_direction]; 
 
+    current_num += movement_value; 
+    cout << "fresh num: " << current_num << endl; 
+
     cout << "move val: " << movement_value << endl; 
-    return 0;
 
 };
 
 current_coordinates_type grid_management::convert_to_coords()
 {
+    //the number is the two coordinates added, minus 1 
     return make_tuple(1, 1);
 };
 

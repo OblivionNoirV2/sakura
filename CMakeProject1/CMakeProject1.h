@@ -10,6 +10,7 @@
 #include <thread>
 #include <ctime>
 #include <tuple>
+#include <variant>
 
 using namespace std;
 //using reception_map = map<int, char>; //coordinates 
@@ -41,7 +42,7 @@ public:
     void reset_grid(); 
     void calc_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
     void mod_position();
-    bool variant_type_checker(); 
+    bool variant_type_checker(variant<int, char>);
 };
 
 //print grid func here 

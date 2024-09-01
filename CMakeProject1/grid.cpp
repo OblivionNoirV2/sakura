@@ -105,10 +105,10 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
 };
 
 //checks if spot is taken. If it is, meaning it's NOT an int, returns true
-bool grid_management::variant_type_checker()
+bool grid_management::variant_type_checker(variant<int, char> type_given)
 {
 
-    return true; 
+    return true; //temp
 }
 
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
@@ -118,14 +118,9 @@ void grid_management::mod_position()
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
-    if (holds_alternative<int>(mixed_grid[current_pos]))
-    {
-        cout << "is an int" << endl;
-    }
-    else
-    {
-        cout << "not an int" << endl;
-    }
+    bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
+
+    cout << "is spot taken: " << is_spot_taken << endl; 
 
 };
 /*int get_row_or_column()

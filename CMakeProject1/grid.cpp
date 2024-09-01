@@ -107,9 +107,8 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
 //checks if spot is taken. If it is, meaning it's NOT an int, returns true
 bool grid_management::variant_type_checker(variant<int, char> type_given)
 {
-
-    return true; //temp
-}
+    return holds_alternative<int>(type_given) ? false : true;
+};
 
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 

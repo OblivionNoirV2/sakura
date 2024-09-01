@@ -78,6 +78,7 @@ map<char, int> match_to_movement =
     {'D', 1}
 };
 
+
 int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates) //gets the cell number based on input recieved, which will then be converted to a coordinate
 {
     cout << "test letter: " << get<0>(recieved_coordinates) << endl;
@@ -93,7 +94,10 @@ int grid_management::calc_cell_number(reception_tuple_type& recieved_coordinates
     cout << "extracted direction: " << extracted_direction << endl; 
     //first we need to know what number we're on. Default is 85. 
 
-    //use a map instead of a switch to avoid writing the same type of line over and over 
+    //retrieve movement value 
+    int movement_value = match_to_movement[extracted_direction]; 
+
+    cout << "move val: " << movement_value << endl; 
     return 0;
 
 };

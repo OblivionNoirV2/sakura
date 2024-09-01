@@ -40,6 +40,7 @@ class grid_management
 public: 
     void reset_grid(); 
     void calc_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
+    void mod_position();
 };
 
 //print grid func here 

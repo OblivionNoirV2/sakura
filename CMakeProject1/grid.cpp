@@ -99,9 +99,16 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     cout << "fresh num: " << current_num << endl; 
 
     cout << "move val: " << movement_value << endl; 
+    mod_position();
 
 };
 
+//Next we need to adjust the new position accordingly 
+
+void grid_management::mod_position()
+{
+    cout << "num inside mod pos func: " << current_num << endl; 
+}
 /*int get_row_or_column()
 {
 

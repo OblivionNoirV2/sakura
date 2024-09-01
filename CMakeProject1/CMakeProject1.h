@@ -41,6 +41,7 @@ public:
     void reset_grid(); 
     void calc_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
     void mod_position();
+    bool variant_type_checker(); 
 };
 
 //print grid func here 

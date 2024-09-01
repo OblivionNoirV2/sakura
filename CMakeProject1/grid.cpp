@@ -5,6 +5,7 @@
 #include<array>
 #include <variant>
 #include <cmath> 
+#include <type_traits>
 using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
@@ -103,11 +104,29 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
 
 };
 
-//Next we need to adjust the new position accordingly 
+//checks if spot is taken. If it is, meaning it's NOT an int, returns true
+bool grid_management::variant_type_checker()
+{
+
+}
+
+//Next we need to adjust the new position accordingly, simple array position swap after some checks
 
 void grid_management::mod_position()
 {
     cout << "num inside mod pos func: " << current_num << endl; 
+    //check if position has a number or character. char = a letter is there 
+
+    if (holds_alternative<int>(mixed_grid[current_num]))
+    {
+        cout << "is an int" << endl; 
+    }
+    else
+    {
+        cout << "not an int" << endl; 
+    }
+
+
 }
 /*int get_row_or_column()
 {

@@ -102,15 +102,9 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
 
 };
 
-current_coordinates_type grid_management::convert_to_coords()
-{
-    //the number is the two coordinates added, minus 1 
-    return make_tuple(1, 1);
-};
-
 /*int get_row_or_column()
 {
 
 }*/
-//put all this shit in a class
+
 

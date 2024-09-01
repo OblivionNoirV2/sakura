@@ -16,7 +16,6 @@ using namespace std;
 
 using reception_tuple_type = tuple<char, char>;
 
-using current_coordinates_type = tuple<int, int>;
 
 //1 2 3 4 corresponding to each direction
 
@@ -41,7 +40,6 @@ class grid_management
 public: 
     void reset_grid(); 
     void calc_cell_number(reception_tuple_type& recieved_coords); //get cell number, then convert that to a coordinate
-    current_coordinates_type convert_to_coords();
 };
 
 //print grid func here 

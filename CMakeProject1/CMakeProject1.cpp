@@ -85,7 +85,7 @@ void stopwatch()
 
 int main()
 {
-
+    start_game(); 
     thread stopwatch_thread(stopwatch);//stopwatch on thread #2
 
     //Sorting sorting;

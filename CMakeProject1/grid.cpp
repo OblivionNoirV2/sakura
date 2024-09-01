@@ -57,7 +57,7 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
     }
 };
 
-int current_num = 85; //default is 85 
+int current_pos = 85; //default is 85 
 
 /*
 * use the extracted direction to determine how to move
@@ -85,7 +85,7 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     cout << "test letter: " << get<0>(recieved_coordinates) << endl;
     cout << "test direction: " << get<1>(recieved_coordinates) << endl;
 
-    cout << "current_num: " << current_num << endl;
+    cout << "current_pos: " << current_pos << endl;
 
     //first extract the direction 
     char extracted_direction = get<1>(recieved_coordinates); 
@@ -96,8 +96,8 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     //retrieve movement value 
     int movement_value = match_to_movement[extracted_direction]; 
 
-    current_num += movement_value; 
-    cout << "fresh num: " << current_num << endl; 
+    current_pos += movement_value; 
+    cout << "fresh num: " << current_pos << endl; 
 
     cout << "move val: " << movement_value << endl; 
     mod_position();
@@ -108,26 +108,26 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
 bool grid_management::variant_type_checker()
 {
 
+    return true; 
 }
 
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 
 void grid_management::mod_position()
 {
-    cout << "num inside mod pos func: " << current_num << endl; 
+    cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
-    if (holds_alternative<int>(mixed_grid[current_num]))
+    if (holds_alternative<int>(mixed_grid[current_pos]))
     {
-        cout << "is an int" << endl; 
+        cout << "is an int" << endl;
     }
     else
     {
-        cout << "not an int" << endl; 
+        cout << "not an int" << endl;
     }
 
-
-}
+};
 /*int get_row_or_column()
 {
 

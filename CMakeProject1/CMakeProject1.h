@@ -68,6 +68,6 @@ extern char previous_letter;
 extern char previous_direction;
 
 extern int prev_num; 
-extern int current_num; 
+extern int current_pos; 
 
 #endif

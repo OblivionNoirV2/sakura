@@ -112,14 +112,15 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
     return holds_alternative<int>(type_given) ? false : true;
 };
 
+
+
+void grid_management::swap_cell(char& recieved_letter)
+{
+    mixed_grid[current_pos] = recieved_letter;
+
+};
+
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
-
-void swap_cell(char& recieved_letter)
-{ 
-    mixed_grid[current_pos] = recieved_letter; 
-
-}
-
 void grid_management::mod_position(char& recieved_letter)
 {
     cout << "num inside mod pos func: " << current_pos << endl;
@@ -131,7 +132,7 @@ void grid_management::mod_position(char& recieved_letter)
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl; 
 
-    //this is gona be a seperate function 
+    //dump this shit in swap_cell
     if (is_spot_taken)
     {
         //do the swap (char for char) and notify

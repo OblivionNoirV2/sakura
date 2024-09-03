@@ -114,9 +114,22 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
 
 
 
-void grid_management::swap_cell(char& recieved_letter)
+void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 {
     mixed_grid[current_pos] = recieved_letter;
+
+    if (cell_taken)
+    {
+        //char for char, in this case we need to display a swap message 
+    }
+    cout << "current pos inside cell swap: " << current_pos << endl; 
+
+    mixed_grid[current_pos] = recieved_letter; //swap the position 
+
+    visit([](const auto& value)
+    {
+       cout << "new value at position "<< current_pos << ": " << value << std::endl;
+    }, mixed_grid[current_pos]);
 
 };
 
@@ -128,33 +141,17 @@ void grid_management::mod_position(char& recieved_letter)
 
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
 
+    //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
+
     cout << "is spot taken: " << is_spot_taken << endl; 
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl; 
 
-    //dump this shit in swap_cell
-    if (is_spot_taken)
-    {
-        //do the swap (char for char) and notify
-    }
-    else
-    {
-        //do the swap (char for int) 
-        mixed_grid[current_pos] = recieved_letter; 
-
-        std::visit([](const auto& value) 
-            {
-                std::cout << value << std::endl;  // Prints the held value, no matter the type (int or char)
-            }, mixed_grid[current_pos]);
+    swap_cell(recieved_letter, is_spot_taken); 
 
 
-        //cout << mixed_grid[current_pos] << endl; 
-    }
 
 };
-/*int get_row_or_column()
-{
 
-}*/
 
 

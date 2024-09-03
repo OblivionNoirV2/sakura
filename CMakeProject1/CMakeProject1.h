@@ -43,7 +43,7 @@ public:
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
     void mod_position(char&);//letter 
     bool variant_type_checker(variant<int, char>);
-    void swap_cell(char&); 
+    void swap_cell(char&, bool); 
 };
 
 //print grid func here 

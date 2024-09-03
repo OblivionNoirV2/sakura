@@ -17,7 +17,7 @@ using namespace std;
 //A -> S or K or R
 
 
-string display_message(string message) //move this to header 
+string display_message(string message) 
 {
     return message; 
 }

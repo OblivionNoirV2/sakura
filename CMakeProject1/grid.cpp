@@ -136,6 +136,8 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 void grid_management::mod_position(char& recieved_letter)
 {
+
+    
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
@@ -143,13 +145,13 @@ void grid_management::mod_position(char& recieved_letter)
 
     //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
 
+   
+
     cout << "is spot taken: " << is_spot_taken << endl; 
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl; 
 
     swap_cell(recieved_letter, is_spot_taken); 
-
-
 
 };
 

@@ -61,6 +61,8 @@ const array<char, 4> valid_directions =
 
 void stopwatch();
 
+string display_message(string);
+
 extern int seconds; 
 
 

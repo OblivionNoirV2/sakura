@@ -22,19 +22,19 @@ string display_message(string message)
     return message; 
 }
 
-bool start_game() //returns true when game is started 
+static bool start_game() //returns true when game is started 
 {
 
-    char begin_var; 
+    char begin_var;
     //cout << "test" << endl;
-    cout << "S for start, X for exit or E for explanation" << endl; 
-    cin >> begin_var; 
+    cout << "S for start, X for exit or E for explanation" << endl;
+    cin >> begin_var;
     cout << "input is" << " " << begin_var << endl;
 
     //ensure it is a character 
     if (isalpha(begin_var))
     {
-        cout << "yay you entered a character" << endl; 
+        cout << "yay you entered a character" << endl;
 
     }
     else
@@ -47,28 +47,25 @@ bool start_game() //returns true when game is started
     //check validity and act according to input 
     switch (begin_var)
     {
-        case 's':
-            return true; 
-            break; 
-        case 'x': 
-            exit(0); 
-            break;
-        case 'e': 
-            //display how the game works
-            break; 
-        default: 
-            //input is invalid, try again 
-            cout << display_message("invalid input, please enter S, X or E") << endl;
-            start_game();
+    case 's':
+        return true;
+        break;
+    case 'x':
+        exit(0);
+        break;
+    case 'e':
+        //display how the game works
+        break;
+    default:
+        //input is invalid, try again 
+        cout << display_message("invalid input, please enter S, X or E") << endl;
+        start_game();
 
     }
 
-    //cout << "final begin var" << " " << begin_var << endl; 
+    return false;
 
-
-    return false; 
-
-}
+};
 
 int seconds = 0; 
 void stopwatch()
@@ -92,7 +89,7 @@ int main()
 
     //sorting.reinitialize();
     grid_management grid_management_2;
-    grid_management_2.reset_grid();
+    grid_management_2.print_grid();
 
     input input_2;
     reception_tuple_type recieved_input = input_2.get_input(); //now we have the input 

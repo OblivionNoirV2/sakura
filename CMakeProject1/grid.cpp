@@ -27,7 +27,7 @@ int digit_checker(int number)//return number of digits in number
 int origin_point = 85; //(0, 0)
 array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letters will be chars
 
-void grid_management::reset_grid() //reset to all 0s, this should happen first
+void grid_management::print_grid() //reset to all 0s, this should happen first
 {
     int cell_number = 1; //use 1 because we DO need a middle number (85) to use as 0,0
 
@@ -50,9 +50,9 @@ void grid_management::reset_grid() //reset to all 0s, this should happen first
                 cout << "\n\n";
             }
         }
-        else //print the char
+        else //this works, except it's doing a newline after the char when that should still be only after every 13 elements
         {
-            cout << "Not an int" << " "; //placeholder
+            cout << get<char>(element) << endl; 
         }
     }
 };
@@ -112,6 +112,8 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
     return holds_alternative<int>(type_given) ? false : true;
 };
 
+//function to print the current grid 
+
 
 
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
@@ -130,6 +132,8 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     {
        cout << "new value at position "<< current_pos << ": " << value << std::endl;
     }, mixed_grid[current_pos]);
+
+    print_grid();
 
 };
 

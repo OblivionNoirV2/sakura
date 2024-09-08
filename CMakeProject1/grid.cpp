@@ -119,10 +119,30 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
     return holds_alternative<int>(type_given) ? false : true;
 };
 
+
+//Next we need to adjust the new position accordingly, simple array position swap after some checks
+void grid_management::mod_position(char& recieved_letter)
+{
+
+
+    cout << "num inside mod pos func: " << current_pos << endl;
+    //check if position has a number or character. char = a letter is there 
+
+    bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
+
+    //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
+
+
+
+    cout << "is spot taken: " << is_spot_taken << endl;
+
+    cout << "recieved letter inside mod pos: " << recieved_letter << endl;
+
+    swap_cell(recieved_letter, is_spot_taken);
+
+};
+
 //function to print the current grid 
-
-
-
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 {
     mixed_grid[current_pos] = recieved_letter;
@@ -130,7 +150,8 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     if (cell_taken)
     {
         //char for char, in this case we need to display a swap message 
-    }
+        cout << "Existing letter at position has been swapped for " << recieved_letter << endl;
+    };
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
     mixed_grid[current_pos] = recieved_letter; //swap the position 
@@ -144,27 +165,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 
 };
 
-//Next we need to adjust the new position accordingly, simple array position swap after some checks
-void grid_management::mod_position(char& recieved_letter)
-{
 
-    
-    cout << "num inside mod pos func: " << current_pos << endl;
-    //check if position has a number or character. char = a letter is there 
-
-    bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
-
-    //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
-
-   
-
-    cout << "is spot taken: " << is_spot_taken << endl; 
-
-    cout << "recieved letter inside mod pos: " << recieved_letter << endl; 
-
-    swap_cell(recieved_letter, is_spot_taken); 
-
-};
 
 
 

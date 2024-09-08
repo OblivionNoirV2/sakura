@@ -70,6 +70,9 @@ static bool start_game() //returns true when game is started
 int seconds = 0; 
 
 bool is_timing = true; 
+
+int turn_counter = 0; 
+
 void stopwatch()
 {
     //cout << "starting stopwatch" << endl;

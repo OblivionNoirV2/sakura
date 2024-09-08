@@ -155,11 +155,15 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
     mixed_grid[current_pos] = recieved_letter; //swap the position 
+  
 
     visit([](const auto& value)
     {
        cout << "new value at position "<< current_pos << ": " << value << std::endl;
     }, mixed_grid[current_pos]);
+    turn_counter++; //if it hits the limit, game is over so this'll be a seperate func
+
+    cout << "current turn: " << turn_counter << endl; 
 
     print_grid();
 

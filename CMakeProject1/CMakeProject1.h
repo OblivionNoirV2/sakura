@@ -65,6 +65,7 @@ string display_message(string);
 
 extern int seconds; 
 
+extern int turn_counter; 
 
 extern uint8_t round_num;
 //extern vector<reception_map> past_inputs_combined;//probably not needed

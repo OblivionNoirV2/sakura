@@ -31,6 +31,8 @@ void grid_management::print_grid() //reset to all 0s, this should happen first
 {
     int cell_number = 1; //use 1 because we DO need a middle number (85) to use as 0,0
 
+    int element_count = 1; //need a seperate counter for all elements, for printing purposes. start at 1 for modulo 
+
     for (auto& element : mixed_grid) //for formatting, add 3 extra spaces if the number is single digit and 2 if it's double digit, 1 for triple
     {
         //reset the element to the current cell number
@@ -45,14 +47,19 @@ void grid_management::print_grid() //reset to all 0s, this should happen first
                 : " "
                 ); 
             //add 2 newlines after every 13 elements to form a 13x13 grid
-            if (cell_number % 13 == 1)
-            {
-                cout << "\n\n";
-            }
+  
         }
         else //this works, except it's doing a newline after the char when that should still be only after every 13 elements
         {
-            cout << get<char>(element) << endl; 
+            cout << get<char>(element) << "   ";
+            cell_number++;
+        }
+
+        element_count++; 
+
+        if (element_count % 13 == 1)
+        {
+            cout << "\n\n";
         }
     }
 };

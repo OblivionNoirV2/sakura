@@ -161,6 +161,8 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     {
        cout << "new value at position "<< current_pos << ": " << value << std::endl;
     }, mixed_grid[current_pos]);
+
+    /*deal with turn counting shit here*/
     turn_counter++; //if it hits the limit, game is over so this'll be a seperate func
 
     cout << "current turn: " << turn_counter << endl; 

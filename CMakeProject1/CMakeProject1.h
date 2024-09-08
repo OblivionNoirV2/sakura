@@ -44,6 +44,13 @@ public:
     void mod_position(char&);//letter 
     bool variant_type_checker(variant<int, char>);
     void swap_cell(char&, bool); 
+
+};
+
+class time_management
+{
+    public: 
+        void stopwatch();
 };
 
 //print grid func here 
@@ -59,7 +66,7 @@ const array<char, 4> valid_directions =
 };
 
 
-void stopwatch();
+
 
 string display_message(string);
 

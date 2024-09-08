@@ -73,7 +73,7 @@ bool is_timing = true;
 
 int turn_counter = 0; 
 
-void stopwatch()
+void time_management::stopwatch()
 {
     //cout << "starting stopwatch" << endl;
     while (is_timing)
@@ -88,7 +88,9 @@ void stopwatch()
 int main()
 {
     start_game(); 
-    thread stopwatch_thread(stopwatch);//stopwatch on thread #2
+
+    time_management tm_2; 
+    thread stopwatch_thread(&time_management::stopwatch, &tm_2);//stopwatch on thread #2
 
     //Sorting sorting;
 

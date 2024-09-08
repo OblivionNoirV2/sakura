@@ -71,7 +71,7 @@ int seconds = 0;
 
 bool is_timing = true; 
 
-int turn_counter = 0; 
+int turn_counter = 1; 
 
 void time_management::stopwatch()
 {

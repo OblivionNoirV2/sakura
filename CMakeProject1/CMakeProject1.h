@@ -41,16 +41,20 @@ class grid_management
 public: 
     void print_grid(); 
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
-    void mod_position(char&);//letter 
+    void mod_position(char&, int);//letter 
     bool variant_type_checker(variant<int, char>);
-    void swap_cell(char&, bool); 
+    void swap_cell(char&, bool, int); 
+    bool victory_condition_checking(); //true if victorious, false if not 
+    bool check_boundaries();
 
 };
 
 class time_management
 {
-    public: 
-        void stopwatch();
+public: 
+    void stopwatch();
+    void turn_management(); 
+
 };
 
 //print grid func here 

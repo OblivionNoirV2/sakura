@@ -109,7 +109,7 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     cout << "fresh num: " << current_pos << endl; 
 
     cout << "move val: " << movement_value << endl; 
-    mod_position(extracted_letter);
+    mod_position(extracted_letter, movement_value);
 
 };
 
@@ -121,29 +121,40 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
 
 
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
-void grid_management::mod_position(char& recieved_letter)
+void grid_management::mod_position(char& recieved_letter, int movement_value)
 {
-
-
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
 
     //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
+    //if it is out of bounds, turn ends. 
 
 
-
+    if (check_boundaries())
+    {
+        //turn is invalid, nothing happens and move to next
+        //do this next
+    }
+    else
+    {
+        swap_cell(recieved_letter, is_spot_taken, movement_value);
+    }
     cout << "is spot taken: " << is_spot_taken << endl;
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl;
 
-    swap_cell(recieved_letter, is_spot_taken);
-
+};
+//ensure position remains within the allotted variant array
+bool grid_management::check_boundaries()
+{
+    return current_pos < 170 && current_pos >= 1 ? false : true;
 };
 
-//function to print the current grid 
-void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
+time_management tm_3; 
+
+void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int movement_value)
 {
     mixed_grid[current_pos] = recieved_letter;
 
@@ -155,21 +166,51 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
     mixed_grid[current_pos] = recieved_letter; //swap the position 
-  
 
-    visit([](const auto& value)
+    /*int current_position_local = current_pos;
+    int movement_value_local = movement_value;*/
+  
+    visit([](const auto& value)//todo figure out hwo to make this printed value fit with the actual number that was swapped
     {
-       cout << "new value at position "<< current_pos << ": " << value << std::endl;
+        cout << "new value at position " << current_pos << ": " << value << std::endl;
     }, mixed_grid[current_pos]);
 
+    //victory check here 
+    
     /*deal with turn counting shit here*/
-    turn_counter++; //if it hits the limit, game is over so this'll be a seperate func
-
+   
     cout << "current turn: " << turn_counter << endl; 
 
+    
     print_grid();
 
 };
+
+bool grid_management::victory_condition_checking()
+{
+    return 0; 
+}
+
+//before this we need to check for victory conditions, actually 
+void time_management::turn_management()
+{
+
+    //50 turn limit
+    /*cout << "inside turn management" << endl;
+
+    if (turn_counter > 50)
+    {
+        //game is over
+    }
+    else
+    {
+        turn_counter++;
+
+    }
+    //if it hits the limit(, game is over. if its not over, add 1 to the turn counter. check if it's over FIRST (>50)
+    */
+
+}
 
 
 

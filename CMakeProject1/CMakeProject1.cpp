@@ -68,16 +68,18 @@ static bool start_game() //returns true when game is started
 };
 
 int seconds = 0; 
+
+bool is_timing = true; 
 void stopwatch()
 {
     //cout << "starting stopwatch" << endl;
-
-    while (true)
+    while (is_timing)
     {
         this_thread::sleep_for(chrono::seconds(1));
         ++seconds;
         //cout << seconds << " seconds passed" << endl;
     }
+
 };
 
 int main()

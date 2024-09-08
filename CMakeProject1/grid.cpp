@@ -128,13 +128,9 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
 
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
 
-    //remember we also need to make sure it's not out of bounds - number must be between 1 and 169
-    //if it is out of bounds, turn ends. 
-
-
     if (check_boundaries())
     {
-        //turn is invalid, nothing happens and move to next
+        //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         //do this next
     }
     else
@@ -166,22 +162,16 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
     mixed_grid[current_pos] = recieved_letter; //swap the position 
-
-    /*int current_position_local = current_pos;
-    int movement_value_local = movement_value;*/
   
     visit([](const auto& value)//todo figure out hwo to make this printed value fit with the actual number that was swapped
     {
         cout << "new value at position " << current_pos << ": " << value << std::endl;
     }, mixed_grid[current_pos]);
 
-    //victory check here 
-    
-    /*deal with turn counting shit here*/
+    //victory check here then turn counting shit
    
     cout << "current turn: " << turn_counter << endl; 
 
-    
     print_grid();
 
 };
@@ -191,7 +181,7 @@ bool grid_management::victory_condition_checking()
     return 0; 
 }
 
-//before this we need to check for victory conditions, actually 
+//before this we need to check for victory conditions
 void time_management::turn_management()
 {
 

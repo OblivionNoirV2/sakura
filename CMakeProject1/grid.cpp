@@ -106,7 +106,7 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     int movement_value = match_to_movement[extracted_direction]; 
 
     current_pos += movement_value; 
-    cout << "fresh num: " << current_pos << endl; 
+    cout << "fresh position: " << current_pos << endl; 
 
     cout << "move val: " << movement_value << endl; 
     mod_position(extracted_letter, movement_value);
@@ -182,6 +182,8 @@ bool grid_management::victory_condition_checking()
 {
     return 0; 
 }
+
+
 
 //before this we need to check for victory conditions
 void time_management::turn_management()

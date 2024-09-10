@@ -86,4 +86,6 @@ extern char previous_direction;
 extern int prev_num; 
 extern int current_pos; 
 
+extern bool game_running; 
+
 #endif

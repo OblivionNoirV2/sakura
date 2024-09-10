@@ -119,7 +119,7 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
     return holds_alternative<int>(type_given) ? false : true;
 };
 
-
+time_management tm_3;
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 void grid_management::mod_position(char& recieved_letter, int movement_value)
 {
@@ -133,8 +133,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         //do this next
         display_message("Boundary hit"); 
-        turn_counter++; 
-        victory_condition_checking(); //skip the swap
+        tm_3.turn_management();
     }
     else
     {
@@ -151,7 +150,6 @@ bool grid_management::check_boundaries()
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
 
-time_management tm_3; 
 
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int movement_value)
 {

@@ -96,9 +96,12 @@ int main()
 
     //sorting.reinitialize();
     grid_management grid_management_2;
+    input input_2;
+
+    //wrap in while loop for game loop? 
     grid_management_2.print_grid();
 
-    input input_2;
+
     reception_tuple_type recieved_input = input_2.get_input(); //now we have the input 
 
     cout << "recieved letter: " << get<0>(recieved_input) << endl;

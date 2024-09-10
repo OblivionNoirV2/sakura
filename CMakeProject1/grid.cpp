@@ -132,6 +132,9 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         //do this next
+        display_message("Boundary hit"); 
+        turn_counter++; 
+        victory_condition_checking(); //skip the swap
     }
     else
     {
@@ -173,6 +176,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
     cout << "current turn: " << turn_counter << endl; 
 
     print_grid();
+    victory_condition_checking(); 
 
 };
 

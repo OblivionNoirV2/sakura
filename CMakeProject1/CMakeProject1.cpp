@@ -111,9 +111,7 @@ int main()
         grid_management_2.calc_cell_number(recieved_input);
 
     }
-    grid_management_2.print_grid();
-
-
+    //grid_management_2.print_grid();
 
     //to move down a row by 1, it's gonna be +13 
     //to up up a row by 1, it's gonna be -13 

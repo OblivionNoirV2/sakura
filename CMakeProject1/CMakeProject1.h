@@ -11,6 +11,7 @@
 #include <ctime>
 #include <tuple>
 #include <variant>
+#include <optional>
 
 using namespace std;
 //using reception_map = map<int, char>; //coordinates 
@@ -53,7 +54,7 @@ class time_management
 {
 public: 
     void stopwatch();
-    void turn_management(); 
+    void turn_management(bool); //bool for boundary hit or not
 
 };
 

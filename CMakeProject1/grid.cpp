@@ -6,6 +6,7 @@
 #include <variant>
 #include <cmath> 
 #include <type_traits>
+#include <optional>
 using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
@@ -131,9 +132,8 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     if (check_boundaries())
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
-        //do this next
         display_message("Boundary hit"); 
-        tm_3.turn_management();
+        tm_3.turn_management(true);
     }
     else
     {
@@ -185,8 +185,8 @@ bool grid_management::victory_condition_checking()
 
 
 
-//before this we need to check for victory conditions
-void time_management::turn_management()
+//before this we need to check for victory conditions, but not if a boundary was hit
+void time_management::turn_management(bool boundary_hit)
 {
 
     //50 turn limit

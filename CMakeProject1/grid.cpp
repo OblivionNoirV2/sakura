@@ -173,22 +173,32 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
     cout << "current turn: " << turn_counter << endl; 
 
     print_grid();
+    check_positions();
     victory_condition_checking(); 
 
 };
+
+//array<int, 6>
+surroundings_type positions_to_check = {
+    -1, 1, 12, 13, 14, -14, -13, -12
+};
+
 //will return info about the cells surrounding the current_pos
-//array<int, 8>
 surroundings_type grid_management::check_positions()
 {
     surroundings_type surrounding_array = {}; 
+    for (size_t i = 0; i < positions_to_check.size(); ++i) 
+    {
+        surrounding_array[i] = current_pos + positions_to_check[i];
+        cout << surrounding_array[i] << endl; 
+
+    }
 
     return surrounding_array; 
 
 };
 
-surroundings_type positions_to_check = {
-    -1, 1, 11, 12, 13, -13, -12, -11
-};
+
 //start by checking what's in each position around the current coordinate (-1, +1, +11, +12, +13, -13, -12, -11)
 bool grid_management::victory_condition_checking()
 {

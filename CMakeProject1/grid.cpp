@@ -163,7 +163,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
 
     mixed_grid[current_pos] = recieved_letter; //swap the position 
   
-    visit([](const auto& value)//todo figure out hwo to make this printed value fit with the actual number that was swapped
+    visit([](const auto& value)
     {
         cout << "new value at position " << current_pos << ": " << value << endl;
     }, mixed_grid[current_pos]);
@@ -176,11 +176,24 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
     victory_condition_checking(); 
 
 };
+//will return info about the cells surrounding the current_pos
+//array<int, 8>
+surroundings_type grid_management::check_positions()
+{
+    surroundings_type surrounding_array = {}; 
 
+    return surrounding_array; 
+
+};
+
+surroundings_type positions_to_check = {
+    -1, 1, 11, 12, 13, -13, -12, -11
+};
 //start by checking what's in each position around the current coordinate (-1, +1, +11, +12, +13, -13, -12, -11)
 bool grid_management::victory_condition_checking()
 {
     cout << "current pos inside grid management:" << current_pos << endl; 
+
     return 0; 
 }
 

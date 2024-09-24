@@ -18,6 +18,7 @@ using namespace std;
 
 using reception_tuple_type = tuple<char, char>;
 
+using surroundings_type = array<int, 8>;
 
 //1 2 3 4 corresponding to each direction
 
@@ -47,6 +48,7 @@ public:
     void swap_cell(char&, bool, int); 
     bool victory_condition_checking(); //true if victorious, false if not 
     bool check_boundaries();
+    surroundings_type check_positions(); 
 
 };
 

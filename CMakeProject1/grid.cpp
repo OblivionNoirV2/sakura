@@ -136,7 +136,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     }
     else
     {
-        swap_cell(recieved_letter, is_spot_taken, movement_value);
+        swap_cell(recieved_letter, is_spot_taken);
     }
     cout << "is spot taken: " << is_spot_taken << endl;
 
@@ -149,8 +149,8 @@ bool grid_management::check_boundaries()
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
 
-
-void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int movement_value)
+char current_target = 's'; //default for the full scan below
+void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 {
     mixed_grid[current_pos] = recieved_letter;
 
@@ -161,35 +161,33 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
     };
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
-    mixed_grid[current_pos] = recieved_letter; //swap the position 
-  
-    visit([](const auto& value)
-    {
-        cout << "new value at position " << current_pos << ": " << value << endl;
-    }, mixed_grid[current_pos]);
-
-    //victory check here then turn counting shit
    
     cout << "current turn: " << turn_counter << endl; 
 
     print_grid();
-    check_positions();
+    //check_positions(); //letter search first
     victory_condition_checking(); 
 
 };
 
-//array<int, 6>
-surroundings_type positions_to_check = {
+surroundings_type positions_to_check = 
+{
     -1, 1, 12, 13, 14, -14, -13, -12
-};
+}; //use these as multipliers?
 
-//will return info about the cells surrounding the current_pos
-surroundings_type grid_management::check_positions()
+
+//do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
+optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
+{
+    return 0;
+};
+//will return info about the cells surrounding the given cell
+surroundings_type grid_management::check_positions(int starting_cell)
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
-        surrounding_array[i] = current_pos + positions_to_check[i];
+        surrounding_array[i] = starting_cell + positions_to_check[i];
         cout << surrounding_array[i] << endl; 
 
     }
@@ -199,7 +197,8 @@ surroundings_type grid_management::check_positions()
 };
 
 
-//start by checking what's in each position around the current coordinate (-1, +1, +11, +12, +13, -13, -12, -11)
+
+//start by checking what's in each position around the current coordinate. find an S first, use that as a guide
 bool grid_management::victory_condition_checking()
 {
     cout << "current pos inside grid management:" << current_pos << endl; 

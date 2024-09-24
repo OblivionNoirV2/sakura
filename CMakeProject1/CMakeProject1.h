@@ -45,10 +45,11 @@ public:
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
     void mod_position(char&, int);//letter 
     bool variant_type_checker(variant<int, char>);
-    void swap_cell(char&, bool, int); 
+    void swap_cell(char&, bool); 
     bool victory_condition_checking(); //true if victorious, false if not 
     bool check_boundaries();
-    surroundings_type check_positions(); 
+    surroundings_type check_positions(int starting_cell); 
+    optional<int> letter_search(); //returns what cell it was found in, if it was found
 
 };
 

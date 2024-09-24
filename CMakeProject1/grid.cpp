@@ -30,7 +30,7 @@ array<variant<int, char>, 169> mixed_grid = {}; //defaults to all 0s, but letter
 
 void grid_management::print_grid() //reset to all 0s, this should happen first
 {
-    int cell_number = 1; //use 1 because we DO need a middle number (85) to use as 0,0
+    int cell_number = 0; //use 1 because we DO need a middle number (85) to use as 0,0
 
     int element_count = 1; //need a seperate counter for all elements, for printing purposes. start at 1 for modulo 
 
@@ -50,22 +50,21 @@ void grid_management::print_grid() //reset to all 0s, this should happen first
             //add 2 newlines after every 13 elements to form a 13x13 grid
   
         }
-        else //this works, except it's doing a newline after the char when that should still be only after every 13 elements
+        else 
         {
             cout << get<char>(element) << "   ";
             cell_number++;
         }
-
-        element_count++; 
-
+        element_count++;
         if (element_count % 13 == 1)
         {
             cout << "\n\n";
         }
+
     }
 };
 
-int current_pos = 85; //default is 85 
+int current_pos = 85; //default is 86, +1 to account for 0th
 
 /*
 * use the extracted direction to determine how to move
@@ -166,7 +165,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
   
     visit([](const auto& value)//todo figure out hwo to make this printed value fit with the actual number that was swapped
     {
-        cout << "new value at position " << current_pos << ": " << value << std::endl;
+        cout << "new value at position " << current_pos << ": " << value << endl;
     }, mixed_grid[current_pos]);
 
     //victory check here then turn counting shit
@@ -178,8 +177,10 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken, int move
 
 };
 
+//start by checking what's in each position around the current coordinate (-1, +1, +11, +12, +13, -13, -12, -11)
 bool grid_management::victory_condition_checking()
 {
+    cout << "current pos inside grid management:" << current_pos << endl; 
     return 0; 
 }
 

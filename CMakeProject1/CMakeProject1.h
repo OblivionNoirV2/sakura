@@ -49,7 +49,7 @@ public:
     bool victory_condition_checking(); //true if victorious, false if not 
     bool check_boundaries();
     surroundings_type check_positions(int starting_cell); 
-    optional<int> letter_search(); //returns what cell it was found in, if it was found
+    optional<int> letter_search(optional<char&>); //returns what cell it was found in, if it was found
 
 };
 

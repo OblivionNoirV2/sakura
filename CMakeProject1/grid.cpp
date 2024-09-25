@@ -149,7 +149,7 @@ bool grid_management::check_boundaries()
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
 
-char current_target = 's'; //default for the full scan below
+//char current_target = 's'; //default for the full scan below
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 {
     mixed_grid[current_pos] = recieved_letter;
@@ -177,8 +177,8 @@ surroundings_type positions_to_check =
 
 
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
-optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
-{
+optional<int> grid_management::letter_search(optional<char&> current_target)//returns cell number target was found at, if it was found
+{ //so start with looking for an S. if one is found, target switches to a, and so on 
     return 0;
 };
 //will return info about the cells surrounding the given cell

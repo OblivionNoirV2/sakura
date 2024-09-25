@@ -190,9 +190,26 @@ void grid_management::print_cell_values()
 char current_target = 'S';//default
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
 optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
-{ //so start with looking for an S if one is found, target switches to A(uppercase! important!), and so on 
+{ //so start with looking for an S, if one is found, target switches to A(uppercase! important!), and so on 
+    bool target_found = false; 
     print_cell_values(); 
-   
+    for (auto& k : mixed_grid)
+    {
+        //reference to access the variable, not copy it
+        visit([&](auto&& arg)
+        {
+            if (arg == current_target)
+            {
+                cout << "target found: " << arg << endl;
+                target_found = true;                
+            }
+        }, k);
+
+        if (target_found)
+        {
+            break;
+        };
+    }
     return 0;
 }; 
 //will return info about the cells surrounding the given cell

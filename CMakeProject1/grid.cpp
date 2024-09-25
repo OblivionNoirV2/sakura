@@ -166,6 +166,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 
     print_grid();
     //check_positions(); //letter search first
+    letter_search();
     victory_condition_checking(); 
 
 };
@@ -175,12 +176,25 @@ surroundings_type positions_to_check =
     -1, 1, 12, 13, 14, -14, -13, -12
 }; //use these as multipliers?
 
-
-//do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
-optional<int> grid_management::letter_search(optional<char&> current_target)//returns cell number target was found at, if it was found
-{ //so start with looking for an S. if one is found, target switches to a, and so on 
-    return 0;
+void grid_management::print_cell_values()
+{
+    for (auto& i : mixed_grid)
+    {
+        visit([](auto&& arg)
+        {
+            cout << "value: " << arg << endl;
+        }, i);
+    }
 };
+
+char current_target = 'S';//default
+//do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
+optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
+{ //so start with looking for an S if one is found, target switches to A(uppercase! important!), and so on 
+    print_cell_values(); 
+   
+    return 0;
+}; 
 //will return info about the cells surrounding the given cell
 surroundings_type grid_management::check_positions(int starting_cell)
 {

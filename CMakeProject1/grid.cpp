@@ -187,6 +187,12 @@ void grid_management::print_cell_values()
     }
 };
 
+//map for things to check for each character. like if we have an A, the next possibility is always an A 
+map<char, vector<char>> alph_relations = {
+
+}; 
+
+
 char current_target = 'S';//default
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
 optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found

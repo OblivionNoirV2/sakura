@@ -188,8 +188,17 @@ void grid_management::print_cell_values()
 };
 
 //map for things to check for each character. like if we have an A, the next possibility is always an A 
-map<char, vector<char>> alph_relations = {
+map<char, vector<char>> alph_relations = 
+{
+    {
+        'S', {'A'}
+    },
+    {
+        'A', {'K', 'R', 'S'}
+    }, 
+    {
 
+    }
 }; 
 
 

@@ -209,27 +209,36 @@ vector<char> grid_management::fetch_alph_relations()
             {'U'} , {'K', 'R'}
         }
     };
-    vector<char> alph_key = {current_target}; //convert current_target to a vector to match
+    
+
+    vector<char> alph_keys = {current_target}; //convert current_target to a vector to match
 
     return char_map[alph_key]; 
 };
 
 
-char current_target = 'S';//default
+vector<char> current_targets = { 'S' };//default
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
 optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
 { //so start with looking for an S, if one is found, target switches to A(uppercase! important!), and so on 
     bool target_found = false; 
+
+    vector<char> target_vect; 
+
     print_cell_values(); 
     for (auto& k : mixed_grid)
     {
         //reference to access the variable, not copy it
         visit([&](auto&& arg)
         {
-            if (arg == current_target)//current_target needs to be an array
+            for (char j : current_targets)
             {
-                cout << "target found: " << arg << endl;
-                target_found = true;                
+                if (arg == j)
+                {
+                    cout << "target found: " << arg << endl;
+                    target_found = true;
+                    break; 
+                }
             }
         }, k);
 

@@ -197,8 +197,18 @@ map<char, vector<char>> alph_relations =
         'A', {'K', 'R', 'S'}
     }, 
     {
-
+        'K', {'A', 'U'}
+    },
+    {
+        'U', {'K', 'R'}
+    },
+    {
+        'R', {'A', 'U'}
+    },
+    {
+        'A', {'R', 'S'}
     }
+
 }; 
 
 

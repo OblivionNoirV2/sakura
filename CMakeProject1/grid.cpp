@@ -7,6 +7,8 @@
 #include <cmath> 
 #include <type_traits>
 #include <optional>
+#include <unordered_map>
+
 using namespace std;
 
 //first we need to figure out what number we are at in the overall array. 0, 0, is 85. 
@@ -210,6 +212,11 @@ map<char, vector<char>> alph_relations =
     }
 
 }; 
+//these values never change, so they can be interpreted at file time. 
+constexpr vector<char> grid_management::fetch_alph_relations()
+{
+
+};
 
 
 char current_target = 'S';//default
@@ -223,7 +230,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
         //reference to access the variable, not copy it
         visit([&](auto&& arg)
         {
-            if (arg == current_target)
+            if (arg == current_target)//current_target needs to be an array
             {
                 cout << "target found: " << arg << endl;
                 target_found = true;                
@@ -232,6 +239,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
 
         if (target_found)
         {
+            cout << "target found: " << current_target << endl;
             break;
         };
     }

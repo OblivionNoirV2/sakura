@@ -51,7 +51,7 @@ public:
     surroundings_type check_positions(int starting_cell); 
     optional<int> letter_search(); //returns what cell it was found in, if it was found
     void print_cell_values();
-    constexpr vector<char> fetch_alph_relations(); //returns what needs to be searched for next
+    vector<char> fetch_alph_relations(); //returns what needs to be searched for next
 };
 
 class time_management

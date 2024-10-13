@@ -192,9 +192,9 @@ void grid_management::print_cell_values()
 //things to check for each character. like if we have an A, the next possibility is a K, R, or S
 
 //these values never change, so they can be interpreted at file time. 
-constexpr vector<char> grid_management::fetch_alph_relations()
+vector<char> grid_management::fetch_alph_relations()
 {
-    unordered_map<vector<char>, vector<char>>
+    unordered_map<vector<char>, vector<char>> char_map
     {
         {
             {'S'}, { 'A' }
@@ -209,6 +209,9 @@ constexpr vector<char> grid_management::fetch_alph_relations()
             {'U'} , {'K', 'R'}
         }
     };
+    vector<char> alph_key = {current_target}; //convert current_target to a vector to match
+
+    return char_map[alph_key]; 
 };
 
 
@@ -230,9 +233,10 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             }
         }, k);
 
-        if (target_found)
+        if (target_found)//if this flips to true it means we need to look for the next part of the word
         {
-            cout << "target found: " << current_target << endl;
+            cout << "moving to next target" << endl; 
+
             break;
         };
     }

@@ -194,7 +194,9 @@ void grid_management::print_cell_values()
 //these values never change, so they can be interpreted at file time. 
 vector<char> grid_management::fetch_alph_relations()
 {
-    unordered_map<vector<char>, vector<char>> char_map
+    vector<char> found_matches = {}; 
+
+    unordered_map<char, vector<char>> char_map
     {
         {
             {'S'}, { 'A' }
@@ -203,17 +205,22 @@ vector<char> grid_management::fetch_alph_relations()
             {'A'}, {'K', 'R', 'S'}
         },
         {
-            {'K', 'R'}, { 'A', 'U' }
-        },
-        {
             {'U'} , {'K', 'R'}
         }
     };
     
+    if (current_targets.size() == 1)
+    {
+        //use the map
+        char alph_key = current_targets[0]; 
+        found_matches = char_map[alph_key];
+    }
+    else 
+    {
+        found_matches = { 'A', 'U' };
+    }
 
-    vector<char> alph_keys = {current_target}; //convert current_target to a vector to match
-
-    return char_map[alph_key]; 
+    return found_matches; 
 };
 
 

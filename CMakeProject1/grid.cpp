@@ -189,33 +189,26 @@ void grid_management::print_cell_values()
     }
 };
 
-//map for things to check for each character. like if we have an A, the next possibility is always an A 
-map<char, vector<char>> alph_relations = 
-{
-    {
-        'S', {'A'}
-    },
-    {
-        'A', {'K', 'R', 'S'}
-    }, 
-    {
-        'K', {'A', 'U'}
-    },
-    {
-        'U', {'K', 'R'}
-    },
-    {
-        'R', {'A', 'U'}
-    },
-    {
-        'A', {'R', 'S'}
-    }
+//things to check for each character. like if we have an A, the next possibility is a K, R, or S
 
-}; 
 //these values never change, so they can be interpreted at file time. 
 constexpr vector<char> grid_management::fetch_alph_relations()
 {
-
+    unordered_map<vector<char>, vector<char>>
+    {
+        {
+            {'S'}, { 'A' }
+        },
+        {
+            {'A'}, {'K', 'R', 'S'}
+        },
+        {
+            {'K', 'R'}, { 'A', 'U' }
+        },
+        {
+            {'U'} , {'K', 'R'}
+        }
+    };
 };
 
 

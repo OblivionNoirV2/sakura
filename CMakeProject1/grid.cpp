@@ -188,10 +188,10 @@ void grid_management::print_cell_values()
         }, i);
     }
 };
-
+vector<char> current_targets = { 'S' };//default
 //things to check for each character. like if we have an A, the next possibility is a K, R, or S
 
-//these values never change, so they can be interpreted at file time. 
+//these values never change, but they rely on current_targets(which does change) so we can't wait till compile time
 vector<char> grid_management::fetch_alph_relations()
 {
     vector<char> found_matches = {}; 
@@ -209,22 +209,19 @@ vector<char> grid_management::fetch_alph_relations()
         }
     };
     
-    if (current_targets.size() == 1)
+    if (current_targets.size() == 1) //if it's K or R, since they share the same matches
     {
         //use the map
         char alph_key = current_targets[0]; 
-        found_matches = char_map[alph_key];
+        return found_matches = char_map[alph_key];
     }
     else 
     {
-        found_matches = { 'A', 'U' };
+        return found_matches = { 'A', 'U' };
     }
 
-    return found_matches; 
 };
 
-
-vector<char> current_targets = { 'S' };//default
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
 optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
 { //so start with looking for an S, if one is found, target switches to A(uppercase! important!), and so on 
@@ -251,8 +248,23 @@ optional<int> grid_management::letter_search()//returns cell number target was f
 
         if (target_found)//if this flips to true it means we need to look for the next part of the word
         {
-            cout << "moving to next target" << endl; 
+            cout << "moving to next target(s)" << endl; 
+            current_targets = fetch_alph_relations(); 
 
+            for (char j : current_targets)
+            {
+                cout << "fresh target: " << j << endl;
+            };
+
+            int target_count = 0; 
+            for (char x : current_targets)
+            {
+                target_count++;
+                cout << "target: " << x << " target count: " << target_count << endl;
+                //then go to victory checking, which will concat the parts together in order to check if the goal has been met. 
+                
+            }
+            target_count = 0; 
             break;
         };
     }

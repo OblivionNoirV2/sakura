@@ -288,7 +288,7 @@ surroundings_type grid_management::check_positions(int starting_cell)
 
 
 //start by checking what's in each position around the current coordinate. find an S first, use that as a guide
-bool grid_management::victory_condition_checking()
+bool grid_management::victory_condition_checking(vector<char> collected_parts)
 {
     cout << "current pos inside grid management:" << current_pos << endl; 
 

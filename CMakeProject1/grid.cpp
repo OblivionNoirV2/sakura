@@ -176,7 +176,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 surroundings_type positions_to_check = 
 {
     -1, 1, 12, 13, 14, -14, -13, -12
-}; //use these as multipliers?
+}; 
 
 void grid_management::print_cell_values()
 {
@@ -188,7 +188,7 @@ void grid_management::print_cell_values()
         }, i);
     }
 };
-vector<char> current_targets = { 'S' };//default
+//vector<char> current_targets = { 'S' };//default
 //things to check for each character. like if we have an A, the next possibility is a K, R, or S
 
 //these values never change, but they rely on current_targets(which does change) so we can't wait till compile time

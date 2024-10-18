@@ -41,6 +41,8 @@ public:
 class grid_management
 {
 public: 
+    vector<char> collected_parts; 
+    vector<char> current_targets = { 'S' };
     void print_grid(); 
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
     void mod_position(char&, int);//letter 

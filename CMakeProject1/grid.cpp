@@ -169,7 +169,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     print_grid();
     //check_positions(); //letter search first
     letter_search();
-    victory_condition_checking(); 
+    victory_condition_checking(collected_parts); 
 
 };
 
@@ -222,6 +222,24 @@ vector<char> grid_management::fetch_alph_relations()
 
 };
 
+void grid_management::print_targets()
+{
+    for (char j : current_targets)
+    {
+        cout << "fresh target: " << j << endl;
+    };
+
+    int target_count = 0;
+    for (char x : current_targets)
+    {
+        target_count++;
+        cout << "target: " << x << " target count: " << target_count << endl;
+        //then go to victory checking, which will concat the parts together in order to check if the goal has been met. 
+
+    }
+    target_count = 0;
+};
+
 //do a full scan, if an s is located use that as a starting point and do check_positions, then repeat the cycle using this to check surrounding letters 
 optional<int> grid_management::letter_search()//returns cell number target was found at, if it was found
 { //so start with looking for an S, if one is found, target switches to A(uppercase! important!), and so on 
@@ -250,21 +268,16 @@ optional<int> grid_management::letter_search()//returns cell number target was f
         {
             cout << "moving to next target(s)" << endl; 
             current_targets = fetch_alph_relations(); 
+            print_targets();
 
-            for (char j : current_targets)
+            if (turn_counter >= 6)//impossible to win with less than 6 turns
             {
-                cout << "fresh target: " << j << endl;
-            };
-
-            int target_count = 0; 
-            for (char x : current_targets)
-            {
-                target_count++;
-                cout << "target: " << x << " target count: " << target_count << endl;
-                //then go to victory checking, which will concat the parts together in order to check if the goal has been met. 
-                
+                //victory checking
             }
-            target_count = 0; 
+            else
+            {
+                //time for next turn
+            }
             break;
         };
     }
@@ -291,6 +304,9 @@ surroundings_type grid_management::check_positions(int starting_cell)
 bool grid_management::victory_condition_checking(vector<char> collected_parts)
 {
     cout << "current pos inside grid management:" << current_pos << endl; 
+
+    //clear the current concat list every 6 turns? 
+
 
     return 0; 
 }

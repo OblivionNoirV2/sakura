@@ -121,7 +121,7 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
     return holds_alternative<int>(type_given) ? false : true;
 };
 
-time_management tm_3;
+mechanics_management mm_3;
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
 void grid_management::mod_position(char& recieved_letter, int movement_value)
 {
@@ -134,7 +134,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         display_message("Boundary hit"); 
-        tm_3.turn_management(true);
+        mm_3.turn_management(true);
     }
     else
     {
@@ -166,7 +166,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
    
     cout << "current turn: " << turn_counter << endl; 
 
-    //print_grid();
+    print_grid();
     //check_positions(); //letter search first
     letter_search();
 
@@ -279,7 +279,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
                 //victory checking
-                victory_condition_checking(collected_parts);
+                mm_3.victory_condition_checking();
             }
             //else the overall loop simply continues 
             break;
@@ -317,21 +317,19 @@ void grid_management::print_collected()
     }
 };
 
-//once the vector reaches a length of 7 (6 items) we will start deleting anything beyond the past 6, as they are useless at that point. 
-bool grid_management::victory_condition_checking()
+//once the vector reaches a length of 7 (6 items) we will start deleting anything beyond the past 6, as they are useless at that point. i think? 
+
+//this stuff will probably get moved to new file 
+bool mechanics_management::victory_condition_checking()
 {
-    
+    cout << "entered victory condition checking"; 
 
    
-
-
     return 0; 
 }
 
-
-
 //before this we need to check for victory conditions, but not if a boundary was hit
-void time_management::turn_management(bool boundary_hit)
+void mechanics_management::turn_management(bool boundary_hit)
 {
 
     //50 turn limit

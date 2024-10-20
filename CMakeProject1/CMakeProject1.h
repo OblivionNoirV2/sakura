@@ -48,7 +48,6 @@ public:
     void mod_position(char&, int);//letter 
     bool variant_type_checker(variant<int, char>);
     void swap_cell(char&, bool); 
-    bool victory_condition_checking(); //true if victorious, false if not 
     bool check_boundaries();
     surroundings_type check_positions(int starting_cell); 
     optional<int> letter_search(); //returns what cell it was found in, if it was found
@@ -58,12 +57,12 @@ public:
     void print_collected();
 };
 
-class time_management
+class mechanics_management : public grid_management
 {
 public: 
     void stopwatch();
     void turn_management(bool); //bool for boundary hit or not
-
+    bool victory_condition_checking(); //true if victorious, false if not 
 };
 
 //print grid func here 

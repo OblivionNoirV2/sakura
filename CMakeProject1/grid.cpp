@@ -66,7 +66,7 @@ void grid_management::print_grid() //reset to all 0s, this should happen first
     }
 };
 
-int current_pos = 85; //default is 86, +1 to account for 0th
+int current_pos = 85; 
 
 /*
 * use the extracted direction to determine how to move
@@ -146,7 +146,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
 
 };
 //ensure position remains within the allotted variant array
-bool grid_management::check_boundaries()
+bool grid_management::check_boundaries() //so how this works if it it hits an edge, it will simply move to the next row. It only becomes a "boundary" if it goes off the turing strip
 {
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
@@ -169,7 +169,6 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     print_grid();
     //check_positions(); //letter search first
     letter_search();
-    victory_condition_checking(collected_parts); 
 
 };
 
@@ -222,7 +221,7 @@ vector<char> grid_management::fetch_alph_relations()
 
 };
 
-void grid_management::print_targets()
+void grid_management::print_targets(vector<char> current_targets)
 {
     for (char j : current_targets)
     {
@@ -247,17 +246,17 @@ optional<int> grid_management::letter_search()//returns cell number target was f
 
     vector<char> target_vect; 
 
-    print_cell_values(); 
+    //print_cell_values(); 
     for (auto& k : mixed_grid)
     {
         //reference to access the variable, not copy it
         visit([&](auto&& arg)
         {
-            for (char j : current_targets)
+            for (char j : current_targets)//somehow, current_targets is getting integers in it. 
             {
                 if (arg == j)
                 {
-                    cout << "target found: " << arg << endl;
+                    cout << "target found: " << arg << endl; //this should not ever return 65 
                     target_found = true;
                     break; 
                 }
@@ -268,16 +267,14 @@ optional<int> grid_management::letter_search()//returns cell number target was f
         {
             cout << "moving to next target(s)" << endl; 
             current_targets = fetch_alph_relations(); 
-            print_targets();
+            print_targets(current_targets);
 
-            if (turn_counter >= 6)//impossible to win with less than 6 turns
+            if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
                 //victory checking
+                victory_condition_checking(collected_parts);
             }
-            else
-            {
-                //time for next turn
-            }
+            //else the overall loop simply continues 
             break;
         };
     }
@@ -298,14 +295,27 @@ surroundings_type grid_management::check_positions(int starting_cell)
 
 };
 
+void grid_management::print_collected(vector<char> collected_parts)
+{
+    if (collected_parts.empty())
+    {
+        cout << "collection is empty" << endl; 
+    }
+    else
+    {
+        for (int j = 0; j < collected_parts.size(); ++j)
+        {
+            cout << j << endl; 
+        }
+    }
+};
 
-
-//start by checking what's in each position around the current coordinate. find an S first, use that as a guide
+//once the vector reaches a length of 7 (6 items) we will start deleting anything beyond the past 6, as they are useless at that point. 
 bool grid_management::victory_condition_checking(vector<char> collected_parts)
 {
-    cout << "current pos inside grid management:" << current_pos << endl; 
+    
 
-    //clear the current concat list every 6 turns? 
+   
 
 
     return 0; 

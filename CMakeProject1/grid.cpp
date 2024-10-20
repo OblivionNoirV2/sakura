@@ -302,7 +302,7 @@ surroundings_type grid_management::check_positions(int starting_cell)
 
 };
 
-void grid_management::print_collected(vector<char> collected_parts)
+void grid_management::print_collected()
 {
     if (collected_parts.empty())
     {
@@ -318,7 +318,7 @@ void grid_management::print_collected(vector<char> collected_parts)
 };
 
 //once the vector reaches a length of 7 (6 items) we will start deleting anything beyond the past 6, as they are useless at that point. 
-bool grid_management::victory_condition_checking(vector<char> collected_parts)
+bool grid_management::victory_condition_checking()
 {
     
 

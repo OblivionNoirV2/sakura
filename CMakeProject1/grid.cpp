@@ -166,7 +166,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
    
     cout << "current turn: " << turn_counter << endl; 
 
-    print_grid();
+    //print_grid();
     //check_positions(); //letter search first
     letter_search();
 
@@ -210,9 +210,16 @@ vector<char> grid_management::fetch_alph_relations()
     
     if (current_targets.size() == 1) //if it's K or R, since they share the same matches
     {
-        //use the map
-        char alph_key = current_targets[0]; 
-        return found_matches = char_map[alph_key];
+        char alph_key = current_targets[0];
+
+        cout << "inside current target cond, alph key: " << alph_key << endl;//this is S, as expected
+     
+       found_matches = char_map[alph_key];
+       for (char i : found_matches)
+       {
+           cout << "match:" << i << endl; 
+       }
+       return found_matches;
     }
     else 
     {
@@ -221,7 +228,7 @@ vector<char> grid_management::fetch_alph_relations()
 
 };
 
-void grid_management::print_targets(vector<char> current_targets)
+void grid_management::print_targets()
 {
     for (char j : current_targets)
     {
@@ -267,7 +274,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
         {
             cout << "moving to next target(s)" << endl; 
             current_targets = fetch_alph_relations(); 
-            print_targets(current_targets);
+            print_targets();
 
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {

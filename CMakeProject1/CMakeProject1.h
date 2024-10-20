@@ -53,7 +53,7 @@ public:
     surroundings_type check_positions(int starting_cell); 
     optional<int> letter_search(); //returns what cell it was found in, if it was found
     void print_cell_values();
-    void print_targets(vector<char> current_targets);
+    void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected(vector<char> collected_parts);
 };

@@ -134,7 +134,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         display_message("Boundary hit"); 
-        mm_3.turn_management(true); //lets do this first
+        mm_3.turn_counting(); //lets do this first
     }
     else
     {
@@ -337,15 +337,13 @@ bool mechanics_management::check_turn_counter()
     return turn_counter >= 50 ? true : false; 
 };
 
-//before this we need to check for victory conditions, but not if a boundary was hit
-void mechanics_management::turn_management(bool boundary_hit)
+//before this we need to check for victory conditions, but not if a boundary was hit(casn just skip straight to turn manage w/o checking for victory)
+void mechanics_management::turn_counting()
 {
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
-    if (boundary_hit)
-    {
-        turn_counter++; 
 
-    }
+    bool is_turn_limit = check_turn_counter();
+
     //50 turn limit
     /*cout << "inside turn management" << endl;
 

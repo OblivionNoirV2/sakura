@@ -42,7 +42,7 @@ class grid_management
 {
 public: 
     vector<char> collected_parts; 
-    vector<char> current_targets = { 'S' };
+    vector<char> current_targets;
     void print_grid(); 
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
     void mod_position(char&, int);//letter 
@@ -55,6 +55,11 @@ public:
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected();
+
+    grid_management()
+    {
+        current_targets = { 'S' };
+    };
 };
 
 class mechanics_management : public grid_management
@@ -64,6 +69,11 @@ public:
     void stopwatch();
     void turn_management(bool); //bool for boundary hit or not
     bool victory_condition_checking(); //true if victorious, false if not 
+
+    mechanics_management()
+    {
+        is_victory = false;
+    };
 };
 
 //print grid func here 

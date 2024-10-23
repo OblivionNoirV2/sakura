@@ -275,7 +275,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             cout << "moving to next target(s)" << endl; 
             current_targets = fetch_alph_relations(); 
             print_targets();
-
+            mm_3.victory_condition_checking();
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
                 //victory checking
@@ -322,7 +322,8 @@ void grid_management::print_collected()
 //this stuff will probably get moved to new file 
 bool mechanics_management::victory_condition_checking() //returns victory or no
 {
-    cout << "entered victory condition checking"; 
+    cout << "entered victory condition checking"<<endl; 
+    cout << "is_victory value: " << is_victory << endl; 
 
    
     return is_victory; 

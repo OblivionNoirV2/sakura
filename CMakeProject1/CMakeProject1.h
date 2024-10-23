@@ -28,14 +28,30 @@ using surroundings_type = array<int, 8>;
 //can't go same direction twice in a row, cant use same letter twice in a row
 //goal is to spell SAKURA in some way 
 
+/*const array<char, 6> valid_letters = this does not change hence the implementation
+{
+    'S', 'A', 'K', 'U', 'R', 'A'
+};
 
+const array<char, 4> valid_directions =
+{
+    'W', 'A', 'S', 'D'
+};*/
 class input
 {
 public:
+    const array<char, 6> valid_letters; 
+    const array<char, 4> valid_directions; 
     reception_tuple_type get_input();
     void set_prev_letter(char& previous_letter, char letter);
     void set_prev_direction(char& previous_direction, char direction); 
     void message(string msg);
+
+    input() :  //init immediately since these are const
+        valid_letters { 'S', 'A', 'K', 'U', 'R', 'A' },
+        valid_directions { 'W', 'A', 'S', 'D' }
+        {
+    }
 };
 
 class grid_management
@@ -58,6 +74,7 @@ public:
 
     grid_management()
     {
+        collected_parts = {}; 
         current_targets = { 'S' };
     };
 };
@@ -82,21 +99,12 @@ public:
         is_timing = true;
         turn_counter = 1; 
 
-
     };
 };
 
 //print grid func here 
 
-const array<char, 6> valid_letters = //this does not change hence the implementation
-{
-    'S', 'A', 'K', 'U', 'R', 'A'
-};
 
-const array<char, 4> valid_directions =
-{
-    'W', 'A', 'S', 'D'
-};
 
 
 

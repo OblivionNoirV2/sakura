@@ -146,7 +146,8 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
 
 };
 //ensure position remains within the allotted variant array
-bool grid_management::check_boundaries() //so how this works if it it hits an edge, it will simply move to the next row. It only becomes a "boundary" if it goes off the turing strip
+//so how this works if it it hits an edge, it will simply move to the next row. It only becomes a "boundary" if it goes off the turing strip
+bool grid_management::check_boundaries() 
 {
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
@@ -332,7 +333,8 @@ bool mechanics_management::victory_condition_checking() //returns victory or no
 //before this we need to check for victory conditions, but not if a boundary was hit
 void mechanics_management::turn_management(bool boundary_hit)
 {
-
+    //if a boundary was hit, simply add one to the turn counter and continue the cycle 
+    
     //50 turn limit
     /*cout << "inside turn management" << endl;
 

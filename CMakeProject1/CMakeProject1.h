@@ -40,6 +40,8 @@ const array<char, 4> valid_directions =
 class input
 {
 public:
+    char previous_letter;
+    char previous_direction;
     const array<char, 6> valid_letters; 
     const array<char, 4> valid_directions; 
     reception_tuple_type get_input();
@@ -51,6 +53,8 @@ public:
         valid_letters { 'S', 'A', 'K', 'U', 'R', 'A' },
         valid_directions { 'W', 'A', 'S', 'D' }
         {
+        previous_letter = '\0';
+        previous_direction = '\0';
     }
 };
 
@@ -111,17 +115,11 @@ public:
 //might be able to clean this stuff up
 string display_message(string);
 
-extern int seconds; 
 
-extern int turn_counter; 
 
-extern uint8_t round_num;
 //extern vector<reception_map> past_inputs_combined;//probably not needed
-extern char previous_letter; 
-extern char previous_direction;
 
-extern int prev_num; 
-extern int current_pos; 
+
 
 
 #endif

@@ -152,7 +152,10 @@ bool grid_management::check_boundaries()
     return current_pos < 170 && current_pos >= 1 ? false : true;
 };
 
-//char current_target = 's'; //default for the full scan below
+//char current_
+// 
+// 
+// = 's'; //default for the full scan below
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 {
     mixed_grid[current_pos] = recieved_letter;
@@ -264,7 +267,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             {
                 if (arg == j)
                 {
-                    cout << "target found: " << arg << endl; 
+                    cout << "target found: " << static_cast<char>(arg) << endl; 
                     target_found = true;
                     break; 
                 }
@@ -317,7 +320,6 @@ void grid_management::print_collected()
         }
     }
 };
-
 
 
 //this stuff will probably get moved to new file 

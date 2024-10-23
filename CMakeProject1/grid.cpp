@@ -164,7 +164,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
    
-    cout << "current turn: " << turn_counter << endl; 
+    //cout << "current turn: " << turn_counter << endl; 
 
     print_grid();
     //check_positions(); //letter search first

@@ -67,11 +67,6 @@ static bool start_game() //returns true when game is started
 
 };
 
-int seconds = 0; 
-
-bool is_timing = true; 
-
-int turn_counter = 1; 
 
 void mechanics_management::stopwatch()
 {
@@ -84,22 +79,18 @@ void mechanics_management::stopwatch()
     }
 
 };
+bool game_running = true;//keep global
 
 int main()
 {
     start_game(); 
-    bool game_running = true; 
 
     mechanics_management mm_2; 
     thread stopwatch_thread(&mechanics_management::stopwatch, &mm_2);//stopwatch on thread #2
 
-    //Sorting sorting;
-
-    //sorting.reinitialize();
     grid_management grid_management_2;
     input input_2;
 
-    //wrap in while loop for game loop? 
     while (game_running)
     {
 
@@ -111,12 +102,7 @@ int main()
         grid_management_2.calc_cell_number(recieved_input);
 
     }
-    //grid_management_2.print_grid();
 
-    //to move down a row by 1, it's gonna be +13 
-    //to up up a row by 1, it's gonna be -13 
-    
-    //std::cout << "Guessed Letter: " << guessedLetter << "\n";
     stopwatch_thread.join();
     return 0;
 }

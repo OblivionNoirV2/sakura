@@ -65,6 +65,11 @@ public:
 class mechanics_management : public grid_management
 {
 public: 
+    int seconds;
+    bool is_timing;
+
+    int turn_counter;
+
     bool is_victory; //init this as false
     void stopwatch();
     void turn_management(bool); //bool for boundary hit or not
@@ -73,6 +78,11 @@ public:
     mechanics_management()
     {
         is_victory = false;
+        seconds = 0;
+        is_timing = true;
+        turn_counter = 1; 
+
+
     };
 };
 
@@ -105,6 +115,5 @@ extern char previous_direction;
 extern int prev_num; 
 extern int current_pos; 
 
-extern bool game_running; 
 
 #endif

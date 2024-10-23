@@ -325,18 +325,27 @@ void grid_management::print_collected()
 //this stuff will probably get moved to new file 
 bool mechanics_management::victory_condition_checking() //returns victory or no
 {
-    cout << "entered victory condition checking"<<endl; 
-    cout << "is_victory value: " << is_victory << endl; 
+    cout << "entered victory condition checking" << endl;
+    cout << "is_victory value: " << is_victory << endl;
 
-   
-    return is_victory; 
-}
+
+    return is_victory;
+};
+
+bool mechanics_management::check_turn_counter()
+{
+    return turn_counter >= 50 ? true : false; 
+};
 
 //before this we need to check for victory conditions, but not if a boundary was hit
 void mechanics_management::turn_management(bool boundary_hit)
 {
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
-    
+    if (boundary_hit)
+    {
+        turn_counter++; 
+
+    }
     //50 turn limit
     /*cout << "inside turn management" << endl;
 

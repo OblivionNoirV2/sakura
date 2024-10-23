@@ -88,13 +88,12 @@ class mechanics_management : public grid_management
 public: 
     int seconds;
     bool is_timing;
-
     int turn_counter;
-
     bool is_victory; //init this as false
     void stopwatch();
     void turn_management(bool); //bool for boundary hit or not
     bool victory_condition_checking(); //true if victorious, false if not 
+    bool check_turn_counter(); //returns if max turns are reached or not 
 
     mechanics_management()
     {
@@ -106,20 +105,7 @@ public:
     };
 };
 
-//print grid func here 
-
-
-
-
-
-//might be able to clean this stuff up
 string display_message(string);
-
-
-
-//extern vector<reception_map> past_inputs_combined;//probably not needed
-
-
 
 
 #endif

@@ -134,7 +134,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         display_message("Boundary hit"); 
-        mm_3.turn_management(true);
+        mm_3.turn_management(true); //lets do this first
     }
     else
     {
@@ -263,7 +263,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             {
                 if (arg == j)
                 {
-                    cout << "target found: " << arg << endl; //this should not ever return 65 
+                    cout << "target found: " << arg << endl; 
                     target_found = true;
                     break; 
                 }
@@ -317,15 +317,15 @@ void grid_management::print_collected()
     }
 };
 
-//once the vector reaches a length of 7 (6 items) we will start deleting anything beyond the past 6, as they are useless at that point. i think? 
+
 
 //this stuff will probably get moved to new file 
-bool mechanics_management::victory_condition_checking()
+bool mechanics_management::victory_condition_checking() //returns victory or no
 {
     cout << "entered victory condition checking"; 
 
    
-    return 0; 
+    return is_victory; 
 }
 
 //before this we need to check for victory conditions, but not if a boundary was hit

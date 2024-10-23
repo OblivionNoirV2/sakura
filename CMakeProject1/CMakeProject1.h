@@ -60,6 +60,7 @@ public:
 class mechanics_management : public grid_management
 {
 public: 
+    bool is_victory; //init this as false
     void stopwatch();
     void turn_management(bool); //bool for boundary hit or not
     bool victory_condition_checking(); //true if victorious, false if not 
@@ -79,7 +80,7 @@ const array<char, 4> valid_directions =
 
 
 
-
+//might be able to clean this stuff up
 string display_message(string);
 
 extern int seconds; 

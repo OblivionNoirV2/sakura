@@ -306,7 +306,7 @@ surroundings_type grid_management::check_positions(int starting_cell)
 
 };
 
-void grid_management::print_collected()
+void grid_management::print_collected() const
 {
     if (collected_parts.empty())
     {
@@ -337,7 +337,7 @@ bool mechanics_management::check_turn_counter()
     return turn_counter >= 50 ? true : false; 
 };
 
-//before this we need to check for victory conditions, but not if a boundary was hit(casn just skip straight to turn manage w/o checking for victory)
+//before this we need to check for victory conditions, but not if a boundary was hit(can just skip straight to turn manage w/o checking for victory)
 void mechanics_management::turn_counting()
 {
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
@@ -359,7 +359,7 @@ void mechanics_management::turn_counting()
     //if it hits the limit(, game is over. if its not over, add 1 to the turn counter. check if it's over FIRST (>50)
     */
 
-}
+};
 
 
 

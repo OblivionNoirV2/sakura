@@ -74,7 +74,7 @@ public:
     void print_cell_values();
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
-    void print_collected();
+    void print_collected() const;
 
     grid_management()
     {

@@ -336,7 +336,7 @@ bool mechanics_management::victory_condition_checking() //returns victory or no
 
 bool mechanics_management::check_turn_counter()
 {
-    return turn_counter >= 50 ? true : false; 
+    return turn_counter > 50 ? true : false; 
 };
 
 //before this we need to check for victory conditions, but not if a boundary was hit(can just skip straight to turn manage w/o checking for victory)
@@ -345,12 +345,12 @@ void mechanics_management::turn_counting()
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
     bool is_turn_limit = check_turn_counter();
 
-    turn_counter++;//in any situation, this comes first
+    turn_counter++;//in any situation, this comes first because it's the last stage of the turn
 
     //50 turn limit
     cout << "inside turn management" << endl;
 
-    if (turn_counter > 50)
+    if (check_turn_counter())
     {
         //game is over
     }
@@ -359,12 +359,20 @@ void mechanics_management::turn_counting()
    
 
     }
-    //if it hits the limit(, game is over. if its not over, add 1 to the turn counter. check if it's over FIRST (>50)
     
-
 };
 
+void mechanics_management::game_over()
+{
 
+};
+void mechanics_management::victory()
+{
 
+};
+int mechanics_management::score_calculation()
+{
+    return 0; 
+};
 
 

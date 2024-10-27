@@ -131,12 +131,12 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
    
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
      //reset each time this is run 
-    bool is_boundary_hit = check_boundaries();
-    if (is_boundary_hit)
+
+    if (check_boundaries())
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         display_message("Boundary hit"); 
-        mm_3.turn_counting(is_boundary_hit); //lets do this first
+        mm_3.turn_counting(); //lets do this first
     }
     else
     {
@@ -340,14 +340,15 @@ bool mechanics_management::check_turn_counter()
 };
 
 //before this we need to check for victory conditions, but not if a boundary was hit(can just skip straight to turn manage w/o checking for victory)
-void mechanics_management::turn_counting(bool is_boundary_hit)
+void mechanics_management::turn_counting()
 {
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
-    cout << "hit? " << is_boundary_hit << endl;  
     bool is_turn_limit = check_turn_counter();
 
+    turn_counter++;//in any situation, this comes first
+
     //50 turn limit
-    /*cout << "inside turn management" << endl;
+    cout << "inside turn management" << endl;
 
     if (turn_counter > 50)
     {
@@ -355,11 +356,11 @@ void mechanics_management::turn_counting(bool is_boundary_hit)
     }
     else
     {
-        turn_counter++;
+   
 
     }
     //if it hits the limit(, game is over. if its not over, add 1 to the turn counter. check if it's over FIRST (>50)
-    */
+    
 
 };
 

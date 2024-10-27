@@ -128,13 +128,15 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
+   
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
-
-    if (check_boundaries())
+     //reset each time this is run 
+    bool is_boundary_hit = check_boundaries();
+    if (is_boundary_hit)
     {
         //turn is invalid, nothing happens and move to next (but turn DOES get incremented)
         display_message("Boundary hit"); 
-        mm_3.turn_counting(); //lets do this first
+        mm_3.turn_counting(is_boundary_hit); //lets do this first
     }
     else
     {
@@ -143,7 +145,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     cout << "is spot taken: " << is_spot_taken << endl;
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl;
-
+    
 };
 //ensure position remains within the allotted variant array
 //so how this works if it it hits an edge, it will simply move to the next row. It only becomes a "boundary" if it goes off the turing strip
@@ -338,10 +340,10 @@ bool mechanics_management::check_turn_counter()
 };
 
 //before this we need to check for victory conditions, but not if a boundary was hit(can just skip straight to turn manage w/o checking for victory)
-void mechanics_management::turn_counting()
+void mechanics_management::turn_counting(bool is_boundary_hit)
 {
     //if a boundary was hit, simply add one to the turn counter and continue the cycle 
-
+    cout << "hit? " << is_boundary_hit << endl;  
     bool is_turn_limit = check_turn_counter();
 
     //50 turn limit

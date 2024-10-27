@@ -91,7 +91,7 @@ public:
     int turn_counter;
     bool is_victory; //init this as false
     void stopwatch();
-    void turn_counting(); 
+    void turn_counting(bool is_boundary_hit); 
     bool victory_condition_checking(); //true if victorious, false if not 
     bool check_turn_counter(); //returns if max turns are reached or not 
 

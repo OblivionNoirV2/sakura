@@ -93,7 +93,7 @@ public:
     void stopwatch();
     void turn_counting(); 
     bool victory_condition_checking(); //true if victorious, false if not 
-    bool check_turn_counter(); //returns if max turns are reached or not 
+    bool check_turn_counter() const; //returns if max turns are reached or not 
     void game_over();
     void victory();
     int score_calculation(); 

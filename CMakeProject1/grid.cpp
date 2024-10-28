@@ -329,12 +329,12 @@ bool mechanics_management::victory_condition_checking() //returns victory or no
 {
     cout << "entered victory condition checking" << endl;
     cout << "is_victory value: " << is_victory << endl;
-
+    turn_counting();
 
     return is_victory;
 };
 
-bool mechanics_management::check_turn_counter()
+bool mechanics_management::check_turn_counter() const
 {
     return turn_counter > 50 ? true : false; 
 };
@@ -348,9 +348,10 @@ void mechanics_management::turn_counting()
     turn_counter++;//in any situation, this comes first because it's the last stage of the turn
 
     //50 turn limit
-    cout << "inside turn management" << endl;
+    cout << "inside turn management, new turn count: " << turn_counter << endl;
 
-    if (check_turn_counter())
+    bool is_turn_limit_exceeded = check_turn_counter();
+    if (is_turn_limit_exceeded)
     {
         //game is over
     }
@@ -364,7 +365,7 @@ void mechanics_management::turn_counting()
 
 void mechanics_management::game_over()
 {
-
+    //asks if end or start over?
 };
 void mechanics_management::victory()
 {

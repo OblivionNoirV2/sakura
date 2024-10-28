@@ -229,17 +229,13 @@ vector<char> grid_management::fetch_alph_relations()
     }
     else 
     {
-        return found_matches = { 'A', 'U' };
+        return found_matches = { 'A', 'U' }; //this is matching when it shouldn't. it should not match to U 
     }
 
 };
 
 void grid_management::print_targets()
 {
-    for (char j : current_targets)
-    {
-        cout << "fresh target: " << j << endl;
-    };
 
     int target_count = 0;
     for (char x : current_targets)
@@ -269,8 +265,14 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             {
                 if (arg == j)
                 {
-                    cout << "target found: " << static_cast<char>(arg) << endl; 
+                    char converted_target = static_cast<char>(arg);
+                    cout << "target found: " << converted_target << endl; 
                     target_found = true;
+                    collected_parts.push_back(converted_target);
+                    for (char c : collected_parts)
+                    {
+                        cout << "collected p: " << c << endl;
+                    };
                     break; 
                 }
             }
@@ -281,7 +283,8 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             cout << "moving to next target(s)" << endl; 
             current_targets = fetch_alph_relations(); 
             print_targets();
-            mm_3.victory_condition_checking();
+            print_collected();
+            mm_3.victory_condition_checking(); //temp
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
                 //victory checking
@@ -316,7 +319,8 @@ void grid_management::print_collected() const
     }
     else
     {
-        for (int j = 0; j < collected_parts.size(); ++j)
+        cout << "collected: " << endl; 
+        for (char j : collected_parts)
         {
             cout << j << endl; 
         }
@@ -329,7 +333,9 @@ bool mechanics_management::victory_condition_checking() //returns victory or no
 {
     cout << "entered victory condition checking" << endl;
     cout << "is_victory value: " << is_victory << endl;
-    turn_counting();
+
+    //print_collected();
+    //turn_counting();
 
     return is_victory;
 };

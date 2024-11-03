@@ -178,10 +178,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
 
 };
 
-surroundings_type positions_to_check = 
-{
-    -1, 1, 12, 13, 14, -14, -13, -12
-}; 
+
 
 void grid_management::print_cell_values()
 {
@@ -306,14 +303,19 @@ optional<int> grid_management::letter_search()//returns cell number target was f
     }
     return 0;
 }; 
+surroundings_type positions_to_check =
+{
+    -1, 1, 12, 13, 14, -14, -13, -12
+};
+
 //will return info about the cells surrounding the given cell
-surroundings_type grid_management::check_positions(int starting_cell) //this should be a vector of all used cells, i think, so we can check all surrounding cells in victory(or make a seperate vector for occupied cells)
+surroundings_type grid_management::check_positions(int starting_cell) 
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
         surrounding_array[i] = starting_cell + positions_to_check[i];
-        cout << surrounding_array[i] << endl; 
+        cout << "surrounding: " << surrounding_array[i] << endl;
 
     }
 

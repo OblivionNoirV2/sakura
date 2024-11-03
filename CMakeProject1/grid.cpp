@@ -290,6 +290,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             current_targets = fetch_alph_relations(); 
             print_targets();
             print_collected();
+            check_positions();
             mm_3.victory_condition_checking(); //temp
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
@@ -313,7 +314,7 @@ surroundings_type grid_management::check_positions()
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
-        surrounding_array[i] = current_pos + positions_to_check[i];
+        surrounding_array[i] = current_pos + positions_to_check[i]; //ok so this works, but it's only adding numbers - not checking what's *in* them. do that next
         cout << "surrounding: " << surrounding_array[i] << endl;
 
     }

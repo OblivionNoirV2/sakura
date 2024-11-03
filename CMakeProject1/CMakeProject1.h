@@ -79,7 +79,7 @@ public:
     grid_management()
     {
         collected_parts = {}; 
-        current_targets = { 'S' };
+        current_targets = { 'S' }; //default
     };
 };
 
@@ -90,13 +90,14 @@ public:
     bool is_timing;
     int turn_counter;
     bool is_victory; //init this as false
-    void stopwatch();
+    int stopwatch();
     void turn_counting(); 
     bool victory_condition_checking(); //true if victorious, false if not 
     bool check_turn_counter() const; //returns if max turns are reached or not 
     void game_over();
     void victory();
     int score_calculation(); 
+
 
     mechanics_management()
     {

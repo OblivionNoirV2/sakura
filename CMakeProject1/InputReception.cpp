@@ -74,6 +74,8 @@ reception_tuple_type input::get_input() //first get user input, then compare it 
         }
     }
     cout << "new prev" << letter << endl; 
+    //here we need to find the first target 
+    // 
     //get_input(); //proves that letter tracking works
 
     //now that that's validated get the direction 

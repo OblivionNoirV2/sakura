@@ -210,27 +210,34 @@ vector<char> grid_management::fetch_alph_relations()
             {'A'}, {'K', 'R', 'S'}
         },
         {
+            {'K'}, {'A', 'U'}
+        },
+        {
             {'U'} , {'K', 'R'}
+        },
+        {
+            {'R'}, {'A', 'U'}
         }
     };
-    
+    char alph_key = current_targets[0];
+
+    cout << "inside current target cond, alph key: " << alph_key << endl;//this is S, as expected
+
+    found_matches = char_map[alph_key];
+    for (char i : found_matches)
+    {
+        cout << "match:" << i << endl;
+    }
+    return found_matches;
+    /*
     if (current_targets.size() == 1) //if it's K or R, since they share the same matches
     {
-        char alph_key = current_targets[0];
 
-        cout << "inside current target cond, alph key: " << alph_key << endl;//this is S, as expected
-     
-       found_matches = char_map[alph_key];
-       for (char i : found_matches)
-       {
-           cout << "match:" << i << endl; 
-       }
-       return found_matches;
     }
     else 
     {
         return found_matches = { 'A', 'U' }; //this is matching when it shouldn't. it should not match to U 
-    }
+    }*/
 
 };
 
@@ -260,8 +267,11 @@ optional<int> grid_management::letter_search()//returns cell number target was f
     {
         //reference to access the variable, not copy it
         visit([&](auto&& arg)
-        {
-            for (char j : current_targets)//somehow, current_targets is getting integers in it. 
+        {//because it always starts at S on turn 1. think about this some more hmm
+                /*if (turn_counter > 1) { //we need a way for this to access turn_counter
+
+                }*/
+            for (char j : current_targets)
             {
                 if (arg == j)
                 {
@@ -297,7 +307,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
     return 0;
 }; 
 //will return info about the cells surrounding the given cell
-surroundings_type grid_management::check_positions(int starting_cell)
+surroundings_type grid_management::check_positions(int starting_cell) //this should be a vector of all used cells, i think, so we can check all surrounding cells in victory(or make a seperate vector for occupied cells)
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
@@ -333,8 +343,9 @@ bool mechanics_management::victory_condition_checking() //returns victory or no
 {
     cout << "entered victory condition checking" << endl;
     cout << "is_victory value: " << is_victory << endl;
+    cout << "turn num: " << turn_counter << endl; 
 
-    //print_collected();
+
     //turn_counting();
 
     return is_victory;
@@ -359,7 +370,7 @@ void mechanics_management::turn_counting()
     bool is_turn_limit_exceeded = check_turn_counter();
     if (is_turn_limit_exceeded)
     {
-        //game is over
+        //game is over, but display final time and score 
     }
     else
     {

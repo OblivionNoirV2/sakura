@@ -16,7 +16,7 @@ using namespace std;
 //R -> U or A 
 //A -> S or K or R
 
-
+int turn_counter = 1;
 string display_message(string message) 
 {
     return message; 
@@ -68,7 +68,7 @@ static bool start_game() //returns true when game is started
 };
 
 
-void mechanics_management::stopwatch()
+int mechanics_management::stopwatch() 
 {
     //cout << "starting stopwatch" << endl;
     while (is_timing)
@@ -77,6 +77,7 @@ void mechanics_management::stopwatch()
         ++seconds;
         //cout << seconds << " seconds passed" << endl;
     }
+    return seconds; 
 
 };
 bool game_running = true;//keep global

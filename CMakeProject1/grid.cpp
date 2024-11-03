@@ -66,7 +66,7 @@ void grid_management::print_grid() //reset to all 0s, this should happen first
     }
 };
 
-int current_pos = 85; 
+
 
 /*
 * use the extracted direction to determine how to move
@@ -128,7 +128,6 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
 
-   
     bool is_spot_taken = variant_type_checker(mixed_grid[current_pos]);
      //reset each time this is run 
 
@@ -309,12 +308,12 @@ surroundings_type positions_to_check =
 };
 
 //will return info about the cells surrounding the given cell
-surroundings_type grid_management::check_positions(int starting_cell) 
+surroundings_type grid_management::check_positions() 
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
-        surrounding_array[i] = starting_cell + positions_to_check[i];
+        surrounding_array[i] = current_pos + positions_to_check[i];
         cout << "surrounding: " << surrounding_array[i] << endl;
 
     }

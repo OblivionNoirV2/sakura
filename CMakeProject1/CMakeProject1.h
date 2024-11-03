@@ -20,6 +20,8 @@ using reception_tuple_type = tuple<char, char>;
 
 using surroundings_type = array<int, 8>;
 
+
+
 //1 2 3 4 corresponding to each direction
 
 //a grid, keep track of what's at each position 
@@ -83,6 +85,13 @@ public:
     };
 };
 
+struct final_scores_struct
+{
+    string time_in_min;
+    int turns;
+    int final_score;
+};
+
 class mechanics_management : public grid_management
 {
 public: 
@@ -96,9 +105,7 @@ public:
     bool check_turn_counter() const; //returns if max turns are reached or not 
     void game_over();
     void victory();
-    int score_calculation(); 
-
-
+    final_scores_struct score_calculation(); 
     mechanics_management()
     {
         is_victory = false;

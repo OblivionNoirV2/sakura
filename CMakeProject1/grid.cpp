@@ -388,9 +388,15 @@ void mechanics_management::victory()
 {
 
 };
-int mechanics_management::score_calculation()
+//time(converted to minutes, so this is a string), turns, final score
+final_scores_struct mechanics_management::score_calculation()
 {
-    return 0; 
+    final_scores_struct ph; //placeholder
+    ph.time_in_min = "5";
+    ph.final_score = 100;
+    ph.turns = 30;
+
+    return ph; 
 };
 
 

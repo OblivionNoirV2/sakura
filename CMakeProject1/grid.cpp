@@ -290,7 +290,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
             current_targets = fetch_alph_relations(); 
             print_targets();
             print_collected();
-            check_positions();
+            check_positions(); //just for testing, this may go elsewhere
             mm_3.victory_condition_checking(); //temp
             if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
             {
@@ -315,13 +315,30 @@ surroundings_type grid_management::check_positions()
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
         surrounding_array[i] = current_pos + positions_to_check[i]; //ok so this works, but it's only adding numbers - not checking what's *in* them. do that next
-        cout << "surrounding: " << surrounding_array[i] << endl;
+        cout << "surrounding but only indexes: " << surrounding_array[i] << endl;
 
     }
+    //ok so we need to take that surrounding array and find the values in the mixed grid held at those indexes
+    print_grid();
 
-    return surrounding_array; 
+    //no need to print, just locate so it can use that data 
+    if (!surrounding_array.empty())
+    {
+        for (auto& i : mixed_grid) {
+
+        }
+
+    }
+    else
+    {
+        cout << "surrounding array is empty" << endl;
+    };
+
+    return surrounding_array; //pass this into the function that evals them rather than return?
 
 };
+
+
 
 void grid_management::print_collected() const
 {

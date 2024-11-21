@@ -20,25 +20,10 @@ using reception_tuple_type = tuple<char, char>;
 
 using surroundings_type = array<int, 8>;
 
-
-
-//1 2 3 4 corresponding to each direction
-
 //a grid, keep track of what's at each position 
 //if an occupied position is hit, swap it with the new letter 
-//12 x 12 grid 
 //can't go same direction twice in a row, cant use same letter twice in a row
 //goal is to spell SAKURA in some way 
-
-/*const array<char, 6> valid_letters = this does not change hence the implementation
-{
-    'S', 'A', 'K', 'U', 'R', 'A'
-};
-
-const array<char, 4> valid_directions =
-{
-    'W', 'A', 'S', 'D'
-};*/
 class input
 {
 public:

@@ -267,12 +267,14 @@ optional<int> grid_management::letter_search()//returns cell number target was f
                 /*if (turn_counter > 1) { //we need a way for this to access turn_counter
 
                 }*/
-            for (char j : current_targets)
+            for (size_t j = 0; j < current_targets.size(); ++j)
             {
+                cout << "ct: " << current_targets[j] << endl; 
                 if (arg == j)
                 {
-                    char converted_target = static_cast<char>(arg);
-                    cout << "target found: " << converted_target << endl; 
+                    char converted_target = static_cast<char>(arg); //this whole section needs a careful rework
+
+                    cout << "target found: " << converted_target << endl; //is finding target when it shouldn't. probably need to convert to char or int first
                     target_found = true;
                     collected_parts.push_back(converted_target);
                     for (char c : collected_parts)
@@ -319,7 +321,7 @@ surroundings_type grid_management::check_positions()
 
     }
     //ok so we need to take that surrounding array and find the values in the mixed grid held at those indexes
-    print_grid();
+    //print_grid();
 
     //no need to print, just locate so it can use that data 
     if (!surrounding_array.empty())
@@ -334,7 +336,7 @@ surroundings_type grid_management::check_positions()
             }
             else if (holds_alternative<char>(cell_i))
             {
-                cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd
+                cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
             }
             else
             {

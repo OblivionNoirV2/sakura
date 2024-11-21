@@ -325,14 +325,14 @@ surroundings_type grid_management::check_positions()
     if (!surrounding_array.empty())
     {
         for (size_t i : surrounding_array) { //what we need to check is the indexes present in surrounding_array
-       
+
             if (holds_alternative<int>(mixed_grid[i]))
             {
-                cout << "int" << endl;
+                cout << "int: " << get<int>(mixed_grid[i]) << endl;
             }
             else if (holds_alternative<char>(mixed_grid[i]))
             {
-                cout << "char" << endl;
+                cout << "char: " << get<char>(mixed_grid[i]) << endl;
             }
             else
             {

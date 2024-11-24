@@ -261,49 +261,19 @@ optional<int> grid_management::letter_search()//returns cell number target was f
     //print_cell_values(); 
     for (auto& k : mixed_grid)
     {
-        //reference to access the variable, not copy it
-        visit([&](auto&& arg)
-        {//because it always starts at S on turn 1. think about this some more hmm
-                /*if (turn_counter > 1) { //we need a way for this to access turn_counter
-
-                }*/
-            for (size_t j = 0; j < current_targets.size(); ++j)
-            {
-                char item = current_targets[j];
-                cout << "ct: " << item << endl; 
-               
-                if (arg == j)
-                {
-                    char converted_target = static_cast<char>(arg); //this whole section needs a careful rework
-
-                    cout << "target found: " << converted_target << endl; //is finding target when it shouldn't. probably need to convert to char or int first
-                    target_found = true;
-                    collected_parts.push_back(converted_target);
-                    for (char c : collected_parts)
-                    {
-                        cout << "collected p: " << c << endl;
-                    };
-                    break; 
-                }
-            }
-        }, k);
-
-        if (target_found)//if this flips to true it means we need to look for the next part of the word
+        current_targets = fetch_alph_relations(); 
+        print_targets();
+        print_collected();
+        check_positions(); //just for testing, this may go elsewhere
+        mm_3.victory_condition_checking(); //temp
+        if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
         {
-            cout << "moving to next target(s)" << endl; 
-            current_targets = fetch_alph_relations(); 
-            print_targets();
-            print_collected();
-            check_positions(); //just for testing, this may go elsewhere
-            mm_3.victory_condition_checking(); //temp
-            if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
-            {
                 //victory checking
-                mm_3.victory_condition_checking();
-            }
+            mm_3.victory_condition_checking();
+        }
             //else the overall loop simply continues 
-            break;
-        };
+        break;
+        
     }
     return 0;
 }; 
@@ -311,6 +281,8 @@ surroundings_type positions_to_check =
 {
     -1, 1, 12, 13, 14, -14, -13, -12
 };
+
+//make a function for chaining here
 
 //will return info about the cells surrounding the given cell
 surroundings_type grid_management::check_positions() 
@@ -337,8 +309,9 @@ surroundings_type grid_management::check_positions()
                 cout << "int: " << get<int>(cell_i) << endl;
             }
             else if (holds_alternative<char>(cell_i))
-            {//ok so if one is found here, that means it is a valid target found. a success
+            {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
+                //collected_parts.push_back(cell_i);
             }
             else
             {

@@ -48,7 +48,7 @@ public:
 class grid_management
 {
 public: 
-    vector<char> collected_parts; 
+    vector<char> collected_chain; 
     vector<char> current_targets;
     int current_pos;
     void print_grid(); 
@@ -57,7 +57,7 @@ public:
     bool variant_type_checker(variant<int, char>);
     void swap_cell(char&, bool); 
     bool check_boundaries();
-    surroundings_type check_positions(); 
+    vector<char> check_positions(); 
     optional<int> letter_search(); //returns what cell it was found in, if it was found
     void print_cell_values();
     void print_targets();
@@ -67,7 +67,7 @@ public:
 
     grid_management()
     {
-        collected_parts = {}; 
+        collected_chain = {}; 
         current_targets = { 'S' }; //default
         current_pos = 85;
     };

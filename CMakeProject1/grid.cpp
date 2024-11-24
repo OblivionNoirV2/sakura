@@ -266,7 +266,7 @@ optional<int> grid_management::letter_search()//returns cell number target was f
         print_collected();
         check_positions(); //just for testing, this may go elsewhere
         mm_3.victory_condition_checking(); //temp
-        if (collected_parts.size() >= 6)//impossible to win with less than 6 pieces
+        if (collected_chain.size() >= 6)//impossible to win with less than 6 pieces
         {
                 //victory checking
             mm_3.victory_condition_checking();
@@ -289,7 +289,7 @@ vector<char> grid_management::chaining()
 };
 
 //will return info about the cells surrounding the given cell
-surroundings_type grid_management::check_positions() 
+vector<char> grid_management::check_positions() 
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
@@ -316,7 +316,7 @@ surroundings_type grid_management::check_positions()
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-                //collected_parts.push_back(cell_i);
+                //collected_chain.push_back(cell_i);
             }
             else
             {
@@ -329,7 +329,9 @@ surroundings_type grid_management::check_positions()
         cout << "surrounding array is empty" << endl;
     };
 
-    return surrounding_array; //pass this into the function that evals them rather than return?
+    vector<char> temp = { 'a', 'b' };
+
+    return temp; //pass this into the function that evals them rather than return?
 
 };
 
@@ -337,14 +339,14 @@ surroundings_type grid_management::check_positions()
 
 void grid_management::print_collected() const
 {
-    if (collected_parts.empty())
+    if (collected_chain.empty())
     {
         cout << "collection is empty" << endl; 
     }
     else
     {
         cout << "collected: " << endl; 
-        for (char j : collected_parts)
+        for (char j : collected_chain)
         {
             cout << j << endl; 
         }

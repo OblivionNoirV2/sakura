@@ -48,7 +48,6 @@ public:
 class grid_management
 {
 public: 
-    vector<char> collected_chain; 
     vector<char> current_targets;
     int current_pos;
     void print_grid(); 
@@ -57,17 +56,16 @@ public:
     bool variant_type_checker(variant<int, char>);
     void swap_cell(char&, bool); 
     bool check_boundaries();
-    vector<char> check_positions(); 
+    void check_positions(); 
     optional<int> letter_search(); //returns what cell it was found in, if it was found
     void print_cell_values();
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
-    void print_collected() const;
-    vector<char> chaining();
+    void print_collected(vector<char> collected_items) const;
+    vector<char> chaining(vector<char> chars_to_eval);
 
     grid_management()
     {
-        collected_chain = {}; 
         current_targets = { 'S' }; //default
         current_pos = 85;
     };
@@ -81,7 +79,7 @@ struct final_scores_struct
 
     final_scores_struct(string time = "00:00", int t = 0, int score = 0) 
         : time_in_min(time), turns(t), final_score(score) {}
-};//how is it not initialized...???
+};
 
 class mechanics_management : public grid_management
 {

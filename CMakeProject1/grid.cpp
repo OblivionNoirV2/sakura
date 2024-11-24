@@ -263,14 +263,14 @@ optional<int> grid_management::letter_search()//returns cell number target was f
     {
         current_targets = fetch_alph_relations(); 
         print_targets();
-        print_collected();
+        //print_collected();
         check_positions(); //just for testing, this may go elsewhere
         mm_3.victory_condition_checking(); //temp
-        if (collected_chain.size() >= 6)//impossible to win with less than 6 pieces
+        /*if (collected_chain.size() >= 6)//impossible to win with less than 6 pieces
         {
                 //victory checking
             mm_3.victory_condition_checking();
-        }
+        }*/
             //else the overall loop simply continues 
         break;
         
@@ -283,7 +283,7 @@ surroundings_type positions_to_check =
 };
 
 //make a function for chaining here
-vector<char> grid_management::chaining()
+vector<char> grid_management::chaining(vector<char> chars_to_eval)//and this should also take in the characters being evaluated
 {
 
     vector <char> temp2 = { 'c' };
@@ -292,7 +292,7 @@ vector<char> grid_management::chaining()
 };
 
 //will return info about the cells surrounding the given cell
-vector<char> grid_management::check_positions() 
+void grid_management::check_positions() 
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
@@ -334,22 +334,22 @@ vector<char> grid_management::check_positions()
 
     vector<char> temp = { 'a', 'b' };
 
-    return temp; //pass this into the function that evals them rather than return?
+     //pass the collection into chaining. no return
 
 };
 
 
 
-void grid_management::print_collected() const
+void grid_management::print_collected(vector<char> collected_items) const
 {
-    if (collected_chain.empty())
+    if (collected_items.empty())
     {
         cout << "collection is empty" << endl; 
     }
     else
     {
         cout << "collected: " << endl; 
-        for (char j : collected_chain)
+        for (char j : collected_items)
         {
             cout << j << endl; 
         }
@@ -407,6 +407,7 @@ void mechanics_management::victory()
 {
 
 };
+/*
 //time(converted to minutes, so this is a string), turns, final score
 final_scores_struct mechanics_management::score_calculation()
 {
@@ -416,6 +417,6 @@ final_scores_struct mechanics_management::score_calculation()
     ph.turns = 30;
 
     return ph; 
-};
+};*/
 
 

@@ -269,7 +269,9 @@ optional<int> grid_management::letter_search()//returns cell number target was f
                 }*/
             for (size_t j = 0; j < current_targets.size(); ++j)
             {
-                cout << "ct: " << current_targets[j] << endl; 
+                char item = current_targets[j];
+                cout << "ct: " << item << endl; 
+               
                 if (arg == j)
                 {
                     char converted_target = static_cast<char>(arg); //this whole section needs a careful rework
@@ -335,7 +337,7 @@ surroundings_type grid_management::check_positions()
                 cout << "int: " << get<int>(cell_i) << endl;
             }
             else if (holds_alternative<char>(cell_i))
-            {
+            {//ok so if one is found here, that means it is a valid target found. a success
                 cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
             }
             else

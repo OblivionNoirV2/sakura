@@ -78,7 +78,10 @@ struct final_scores_struct
     string time_in_min;
     int turns;
     int final_score;
-};
+
+    final_scores_struct(string time = "00:00", int t = 0, int score = 0) 
+        : time_in_min(time), turns(t), final_score(score) {}
+};//how is it not initialized...???
 
 class mechanics_management : public grid_management
 {

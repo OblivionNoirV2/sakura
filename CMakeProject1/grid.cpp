@@ -286,6 +286,9 @@ surroundings_type positions_to_check =
 vector<char> grid_management::chaining()
 {
 
+    vector <char> temp2 = { 'c' };
+
+    return temp2;
 };
 
 //will return info about the cells surrounding the given cell

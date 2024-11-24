@@ -283,6 +283,10 @@ surroundings_type positions_to_check =
 };
 
 //make a function for chaining here
+vector<char> grid_management::chaining()
+{
+
+};
 
 //will return info about the cells surrounding the given cell
 surroundings_type grid_management::check_positions() 
@@ -310,6 +314,7 @@ surroundings_type grid_management::check_positions()
             }
             else if (holds_alternative<char>(cell_i))
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
+                //in other words, if we reach this point it passes the first check of being a char in the given range
                 cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
                 //collected_parts.push_back(cell_i);
             }

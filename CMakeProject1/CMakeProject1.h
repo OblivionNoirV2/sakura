@@ -63,6 +63,7 @@ public:
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected() const;
+    vector<char> chaining();
 
     grid_management()
     {

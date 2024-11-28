@@ -165,7 +165,7 @@ void grid_management::swap_cell(char& recieved_letter, bool cell_taken) //this f
     if (cell_taken)
     {
         //char for char, in this case we need to display a swap message 
-        cout << "Existing letter at position has been swapped for " << recieved_letter << endl;
+        cout << "Existing letter at position has been swapped for " << recieved_letter << endl; //swap works fine, but why isn't this writing
     };
     cout << "current pos inside cell swap: " << current_pos << endl; 
 
@@ -284,13 +284,14 @@ surroundings_type positions_to_check =
 };
 
 //this only gets called if the vector is not empty, so there should always be a valid return. 
-vector<char> grid_management::chaining()
+vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 {
     vector <char> temp2 = { 'c' };
 
     return temp2;
 };
 
+chain_mechanics cm1; 
 //will return info about the cells surrounding the given cell
 void grid_management::check_positions() 
 {
@@ -321,7 +322,7 @@ void grid_management::check_positions()
                 char char_success = get<char>(cell_i);
                 cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
                 chars_to_eval.push_back(char_success);
-                print_char_evals();
+                cm1.print_char_evals(chars_to_eval);
             }
             else
             {
@@ -335,16 +336,20 @@ void grid_management::check_positions()
     };
 
      //pass the collection into chaining. no return
+    if (!chars_to_eval.empty())
+    {
+
+    }
 
 };
 
-void grid_management::print_char_evals()
+void chain_mechanics::print_char_evals(vector<char> chars_to_ev)
 {
-    if (!chars_to_eval.empty())
+    if (!chars_to_ev.empty())
     {
-        for (char c : chars_to_eval)
+        for (char c : chars_to_ev)
         {
-            cout << "char to eval: " << c << endl;
+            cout << "char to ev: " << c << endl;
         };
 
     }

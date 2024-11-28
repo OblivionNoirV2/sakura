@@ -63,8 +63,7 @@ public:
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected(vector<char> collected_items) const;
     vector<char> chars_to_eval;
-    vector<char> chaining();
-    void print_char_evals();
+
 
     grid_management()
     {
@@ -74,6 +73,14 @@ public:
     };
 };
 
+class chain_mechanics : public grid_management
+{
+public: 
+    vector<char> chaining(vector<char> elements_to_eval);
+    void print_char_evals(vector<char> chars_to_ev);
+
+
+};
 struct final_scores_struct
 {
     string time_in_min;

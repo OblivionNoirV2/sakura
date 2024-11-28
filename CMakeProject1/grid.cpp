@@ -283,10 +283,9 @@ surroundings_type positions_to_check =
     -1, 1, 12, 13, 14, -14, -13, -12
 };
 
-//make a function for chaining here
-vector<char> grid_management::chaining()//and this should also take in the characters being evaluated, or null if 
+//this only gets called if the vector is not empty, so there should always be a valid return. 
+vector<char> grid_management::chaining()
 {
-
     vector <char> temp2 = { 'c' };
 
     return temp2;
@@ -319,9 +318,10 @@ void grid_management::check_positions()
             else if (holds_alternative<char>(cell_i))
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
-                cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-
-                
+                char char_success = get<char>(cell_i);
+                cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
+                chars_to_eval.push_back(char_success);
+                print_char_evals();
             }
             else
             {
@@ -334,9 +334,24 @@ void grid_management::check_positions()
         cout << "surrounding array is empty" << endl;
     };
 
-    vector<char> temp = { 'a', 'b' };
-
      //pass the collection into chaining. no return
+
+};
+
+void grid_management::print_char_evals()
+{
+    if (!chars_to_eval.empty())
+    {
+        for (char c : chars_to_eval)
+        {
+            cout << "char to eval: " << c << endl;
+        };
+
+    }
+    else
+    {
+        cout << "eval vector is empty" << endl;
+    };
 
 };
 

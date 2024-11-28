@@ -64,12 +64,13 @@ public:
     void print_collected(vector<char> collected_items) const;
     vector<char> chars_to_eval;
     vector<char> chaining();
+    void print_char_evals();
 
     grid_management()
     {
         current_targets = { 'S' }; //default
         current_pos = 85;
-        chars_to_eval = {}; //this does not get reset so it's more efficient to init here than in a class
+        chars_to_eval = {}; //this does not get reset so it's more efficient to init here than in a method
     };
 };
 

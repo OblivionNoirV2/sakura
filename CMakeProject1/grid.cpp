@@ -286,6 +286,7 @@ surroundings_type positions_to_check =
 //this only gets called if the vector is not empty, so there should always be a valid return. 
 vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 {
+    cout << "inside chaining" << endl; 
     vector <char> temp2 = { 'c' };
 
     return temp2;
@@ -338,7 +339,7 @@ void grid_management::check_positions()
      //pass the collection into chaining. no return
     if (!chars_to_eval.empty())
     {
-
+        cm1.chaining(chars_to_eval);
     }
 
 };

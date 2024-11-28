@@ -284,7 +284,7 @@ surroundings_type positions_to_check =
 };
 
 //make a function for chaining here
-vector<char> grid_management::chaining(vector<char> chars_to_eval)//and this should also take in the characters being evaluated, or null if 
+vector<char> grid_management::chaining()//and this should also take in the characters being evaluated, or null if 
 {
 
     vector <char> temp2 = { 'c' };

@@ -62,12 +62,14 @@ public:
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected(vector<char> collected_items) const;
-    vector<char> chaining(vector<char> chars_to_eval);
+    vector<char> chars_to_eval;
+    vector<char> chaining();
 
     grid_management()
     {
         current_targets = { 'S' }; //default
         current_pos = 85;
+        chars_to_eval = {}; //this does not get reset so it's more efficient to init here than in a class
     };
 };
 

@@ -141,7 +141,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     {
         swap_cell(recieved_letter, is_spot_taken);
     }
-    cout << "is spot taken: " << is_spot_taken << endl;
+    cout << "is spot taken? " << is_spot_taken << endl;
 
     cout << "recieved letter inside mod pos: " << recieved_letter << endl;
     
@@ -157,8 +157,9 @@ bool grid_management::check_boundaries()
 // 
 // 
 // = 's'; //default for the full scan below
-void grid_management::swap_cell(char& recieved_letter, bool cell_taken)
+void grid_management::swap_cell(char& recieved_letter, bool cell_taken) //this feels like it should take place later
 {
+    //cout << "is spot taken? " << cell_taken << endl; 
     mixed_grid[current_pos] = recieved_letter;
 
     if (cell_taken)
@@ -283,7 +284,7 @@ surroundings_type positions_to_check =
 };
 
 //make a function for chaining here
-vector<char> grid_management::chaining(vector<char> chars_to_eval)//and this should also take in the characters being evaluated
+vector<char> grid_management::chaining(vector<char> chars_to_eval)//and this should also take in the characters being evaluated, or null if 
 {
 
     vector <char> temp2 = { 'c' };
@@ -319,7 +320,8 @@ void grid_management::check_positions()
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 cout << "char: " << get<char>(cell_i) << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-                //collected_chain.push_back(cell_i);
+
+                
             }
             else
             {

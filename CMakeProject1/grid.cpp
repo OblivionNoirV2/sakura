@@ -283,23 +283,24 @@ surroundings_type positions_to_check =
     -1, 1, 12, 13, 14, -14, -13, -12
 };
 
+chain_mechanics cm1;
 //this only gets called if the vector is not empty, so there should always be a valid return. 
 vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 {
     cout << "inside chaining" << endl; 
+    cm1.print_char_evals(elements_to_eval);
     vector <char> temp2 = { 'c' };
 
     return temp2;
 };
 
-chain_mechanics cm1; 
 //will return info about the cells surrounding the given cell
 void grid_management::check_positions() 
 {
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
-        surrounding_array[i] = current_pos + positions_to_check[i]; //ok so this works, but it's only adding numbers - not checking what's *in* them. do that next
+        surrounding_array[i] = current_pos + positions_to_check[i]; 
         cout << "surrounding but only indexes: " << surrounding_array[i] << endl;
 
     }
@@ -307,7 +308,7 @@ void grid_management::check_positions()
     //print_grid();
 
     //no need to print, just locate so it can use that data 
-    if (!surrounding_array.empty())
+    if (!surrounding_array.empty())//may be able to remove this
     {
         for (size_t i : surrounding_array) 
         { //what we need to check is the indexes present in surrounding_array
@@ -323,7 +324,7 @@ void grid_management::check_positions()
                 char char_success = get<char>(cell_i);
                 cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
                 chars_to_eval.push_back(char_success);
-                cm1.print_char_evals(chars_to_eval);
+                //cm1.print_char_evals(chars_to_eval);
             }
             else
             {
@@ -341,6 +342,10 @@ void grid_management::check_positions()
     {
         cm1.chaining(chars_to_eval);
     }
+    else
+    {
+        cout << "no chars to eval" << endl;
+    };
 
 };
 

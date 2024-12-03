@@ -24,7 +24,7 @@ void input::message(string msg)
 
 };
 
-void up_input(char& txt) //global
+static void up_input(char& txt) //global
 {
     txt = toupper(txt);
 }; 

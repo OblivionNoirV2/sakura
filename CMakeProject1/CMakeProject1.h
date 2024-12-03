@@ -20,10 +20,8 @@ using reception_tuple_type = tuple<char, char>;
 
 using surroundings_type = array<int, 8>;
 
-//a grid, keep track of what's at each position 
 //if an occupied position is hit, swap it with the new letter 
 //can't go same direction twice in a row, cant use same letter twice in a row
-//goal is to spell SAKURA in some way 
 class input
 {
 public:

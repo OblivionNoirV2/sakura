@@ -289,6 +289,14 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 {
     cout << "inside chaining" << endl; 
     cm1.print_char_evals(elements_to_eval);
+    /*algorithm
+    -need to look for certain matches, like if there's an S and an A and shit like that 
+    -if there is, store them on the chain in the proper order
+    -remove those letters from the vector via index (remember this means we need to remove them from the grid as well!) 
+    -remember, by the time it's gotten here we already know the positions are valid so we just need to check for the right combinations
+    -due to how the board is set up, this chain will only get fully cleared when the game ends
+    -ends when a "sakura" is found or turn limit is reached (turn limit should be checked before any major computations take place
+    */
     vector <char> temp2 = { 'c' };
 
     return temp2;

@@ -62,12 +62,11 @@ public:
     void print_collected(vector<char> collected_items) const;
     vector<char> chars_to_eval;
 
-
     grid_management()
     {
         current_targets = { 'S' }; //default
         current_pos = 85;
-        chars_to_eval = {}; //this does not get reset so it's more efficient to init here than in a method
+        chars_to_eval = {}; //this does not get reset (but is edited within the code) so it's more efficient to init here than in a method
     };
 };
 
@@ -76,8 +75,12 @@ class chain_mechanics : public grid_management
 public: 
     vector<char> chaining(vector<char> elements_to_eval);
     void print_char_evals(vector<char> chars_to_ev);
+    vector<char> char_chain; //chain of collection 
 
-
+    chain_mechanics()
+    {
+        char_chain = {};
+    };
 };
 struct final_scores_struct
 {

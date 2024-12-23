@@ -159,11 +159,12 @@ bool grid_management::check_boundaries()
 // = 's'; //default for the full scan below
 void grid_management::swap_cell(char& recieved_letter, bool cell_taken) //this feels like it should take place later
 {
-    //cout << "is spot taken? " << cell_taken << endl; 
+    cout << "is spot taken? " << cell_taken << endl; 
     mixed_grid[current_pos] = recieved_letter;
 
     if (cell_taken)
     {
+        //cout << "cell taken" << mixed_grid[current_pos] << endl; //if this happens, we need to 
         //char for char, in this case we need to display a swap message 
         cout << "Existing letter at position has been swapped for " << recieved_letter << endl; //swap works fine, but why isn't this writing
     };
@@ -284,6 +285,11 @@ surroundings_type positions_to_check =
 };
 
 chain_mechanics cm1;
+
+unordered_map<char, string> combo_reference
+{
+
+};
 //this only gets called if the vector is not empty, so there should always be a valid return. 
 vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 {
@@ -305,6 +311,7 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 //will return info about the cells surrounding the given cell
 void grid_management::check_positions() 
 {
+    vector<char> current_subchain = {}; 
     surroundings_type surrounding_array = {}; 
     for (size_t i = 0; i < positions_to_check.size(); ++i) 
     {
@@ -331,7 +338,11 @@ void grid_management::check_positions()
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 char char_success = get<char>(cell_i);
                 cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-                chars_to_eval.push_back(char_success);
+
+                //so first here we're gonna add it to a subchain, which doesn't get added to the final chain until it's verified that the valid letters did not change. this will need the positions of the collected letters 
+                //pass that subchain to the function here 
+
+                chars_to_eval.push_back(char_success); 
                 //cm1.print_char_evals(chars_to_eval);
             }
             else

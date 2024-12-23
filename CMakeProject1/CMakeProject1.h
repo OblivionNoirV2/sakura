@@ -75,11 +75,11 @@ class chain_mechanics : public grid_management
 public: 
     vector<char> chaining(vector<char> elements_to_eval);
     void print_char_evals(vector<char> chars_to_ev);
-    vector<char> char_chain; //chain of collection 
+    vector<char> final_char_chain; //chain of collection 
 
     chain_mechanics()
     {
-        char_chain = {};
+        final_char_chain = {};
     };
 };
 struct final_scores_struct

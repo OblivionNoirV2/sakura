@@ -50,7 +50,7 @@ public:
     int current_pos;
     void print_grid(); 
     void calc_cell_number(reception_tuple_type&); //get cell number, then convert that to a coordinate
-    void mod_position(char&, int);//letter 
+    void mod_position(char);//letter 
     bool variant_type_checker(variant<int, char>);
     void swap_cell(char&, bool); 
     bool check_boundaries();

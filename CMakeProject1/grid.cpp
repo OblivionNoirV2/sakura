@@ -111,7 +111,7 @@ void grid_management::calc_cell_number(reception_tuple_type& recieved_coordinate
     cout << "fresh position: " << current_pos << endl; 
 
     cout << "move val: " << movement_value << endl; 
-    mod_position(extracted_letter, movement_value);
+    mod_position(extracted_letter);
 
 };
 
@@ -123,7 +123,7 @@ bool grid_management::variant_type_checker(variant<int, char> type_given)
 
 mechanics_management mm_3;
 //Next we need to adjust the new position accordingly, simple array position swap after some checks
-void grid_management::mod_position(char& recieved_letter, int movement_value)
+void grid_management::mod_position(char recieved_letter)
 {
     cout << "num inside mod pos func: " << current_pos << endl;
     //check if position has a number or character. char = a letter is there 
@@ -139,6 +139,7 @@ void grid_management::mod_position(char& recieved_letter, int movement_value)
     }
     else
     {
+        display_message("swap performed");
         swap_cell(recieved_letter, is_spot_taken);
     }
     cout << "is spot taken? " << is_spot_taken << endl;

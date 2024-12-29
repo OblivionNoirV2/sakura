@@ -30,9 +30,9 @@ public:
     const array<char, 6> valid_letters; 
     const array<char, 4> valid_directions; 
     reception_tuple_type get_input();
-    void set_prev_letter(char& previous_letter, char letter);
-    void set_prev_direction(char& previous_direction, char direction); 
-    void message(string msg);
+    void set_prev_letter(char&, char);
+    void set_prev_direction(char&, char); 
+    void message(string);
 
     input() :  //init immediately since these are const
         valid_letters { 'S', 'A', 'K', 'U', 'R', 'A' },
@@ -74,8 +74,8 @@ public:
 class chain_mechanics : public grid_management
 {
 public: 
-    vector<char> chaining(vector<char> elements_to_eval);
-    void print_char_evals(vector<char> chars_to_ev);
+    vector<char> chaining(vector<char>);
+    void print_char_evals(vector<char>);
     vector<char> final_char_chain; //chain of collection 
 
     chain_mechanics()

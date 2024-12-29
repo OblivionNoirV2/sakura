@@ -307,6 +307,14 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 
 bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) 
 {
+    for (const auto& sub_el : subchain)
+    {
+        char sub_el_char = get<0>(sub_el);
+        int sub_el_int = get<1>(sub_el);
+
+        cout << "subchar: " << sub_el_char << endl;
+        cout << "subint: " << sub_el_int << endl;
+    };
     
     cout << "inside subchain verif" << endl; 
     return true; 
@@ -341,7 +349,7 @@ void grid_management::check_positions()
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 char char_success = get<char>(cell_i);
-                cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
+                //cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
 
                 /*
                 so first here we're gonna add it to a subchain, which doesn't get added to the final chain until it's verified that the valid letters did not change. 

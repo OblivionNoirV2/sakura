@@ -311,26 +311,39 @@ bool grid_management::subchain_verif(vector<tuple<char, int>> subchain)
     {
         char sub_el_char = get<0>(sub_el);
         int sub_el_int = get<1>(sub_el);
+        //then compare these values to what the overall array(the grid) contains
 
         cout << "subchar: " << sub_el_char << endl;
         cout << "subint: " << sub_el_int << endl;
+        //the invalid coordinate is removed from the subchain, not the grid. then the remaining valid elements go into the final chain
+        if (get<char>(mixed_grid[sub_el_int]) != sub_el_char)
+        {
+
+        }
+        else 
+        {
+
+        };
+
     };
     
     cout << "inside subchain verif" << endl; 
     return true; 
 };
 
+
+
 //will return info about the cells surrounding the given cell
 void grid_management::check_positions() 
 {
     vector<tuple<char, int>> current_subchain = {}; 
     surroundings_type surrounding_array = {}; 
-    for (size_t i = 0; i < positions_to_check.size(); ++i) 
+    for (size_t i = 0; i < positions_to_check.size(); ++i)
     {
-        surrounding_array[i] = current_pos + positions_to_check[i]; 
+        surrounding_array[i] = current_pos + positions_to_check[i];
         cout << "surrounding but only indexes: " << surrounding_array[i] << endl;
 
-    }
+    };
     //ok so we need to take that surrounding array and find the values in the mixed grid held at those indexes
     //print_grid();
 

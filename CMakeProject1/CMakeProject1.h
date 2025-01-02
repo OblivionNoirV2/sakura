@@ -62,7 +62,6 @@ public:
     void print_collected(vector<char> ) const;
     bool subchain_verif(vector <tuple<char,int>>);
     vector<char> chars_to_eval;
-    map<int, bool> subchain_compare(vector<int>, vector<char>);
 
     grid_management()
     {

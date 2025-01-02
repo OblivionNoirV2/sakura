@@ -305,25 +305,22 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
     return temp2;
 };
 
-bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) 
+
+
+bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) //something in this is breaking the call stack, keep that in mind.
 {
+    vector<int> ints_vect = {};
+    vector<char> chars_vect = {};
     for (const auto& sub_el : subchain)
     {
         char sub_el_char = get<0>(sub_el);
         int sub_el_int = get<1>(sub_el);
+
+        //use the vect of ints to get values, then compare them to the characters in the same order 
         //then compare these values to what the overall array(the grid) contains
 
         cout << "subchar: " << sub_el_char << endl;
         cout << "subint: " << sub_el_int << endl;
-        //the invalid coordinate is removed from the subchain, not the grid. then the remaining valid elements go into the final chain
-        if (get<char>(mixed_grid[sub_el_int]) != sub_el_char)
-        {
-
-        }
-        else 
-        {
-
-        };
 
     };
     

@@ -8,6 +8,7 @@
 #include <type_traits>
 #include <optional>
 #include <unordered_map>
+#include <memory>
 
 using namespace std;
 
@@ -307,24 +308,22 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
 
 
 
-bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) //something in this is breaking the call stack, keep that in mind.
+bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) 
 {
-    vector<int> ints_vect = {};
-    vector<char> chars_vect = {};
-    for (const auto& sub_el : subchain)
+    cout << "inside subchain verif" << endl;
+    const int arr_length = subchain.size(); //use this to make arrays
+    cout << "arr length" << arr_length << endl;
+    auto char_arr = make_unique<char[]>(arr_length);
+    //vector<int> ints_arr = {};
+
+    for (int i = 0; i < arr_length; ++i)
     {
-        char sub_el_char = get<0>(sub_el);
-        int sub_el_int = get<1>(sub_el);
-
-        //use the vect of ints to get values, then compare them to the characters in the same order 
-        //then compare these values to what the overall array(the grid) contains
-
-        cout << "subchar: " << sub_el_char << endl;
-        cout << "subint: " << sub_el_int << endl;
-
+        char_arr[i] = get<0>(subchain[i]); // Extract the `char` from each tuple
+        cout << char_arr[i] << endl;
     };
+
     
-    cout << "inside subchain verif" << endl; 
+  
     return true; 
 };
 

@@ -315,21 +315,19 @@ bool grid_management::subchain_verif(vector<tuple<char, int>> subchain)
     cout << "arr length" << arr_length << endl;
 
 
-    unique_ptr<char[]> char_prt = make_unique<char[]>(arr_length);
-    unique_ptr<int[]> int_prt = make_unique<int[]>(arr_length);
+    unique_ptr<char[]> char_ptr = make_unique<char[]>(arr_length);
+    unique_ptr<int[]> int_ptr = make_unique<int[]>(arr_length);
     //vector<int> ints_arr = {};
 
     for (int i = 0; i < arr_length; ++i)
     {
-        char_prt[i] = get<0>(subchain[i]); // Extract the `char` from each tuple
-        cout << char_prt[i] << endl;
+        char_ptr[i] = get<0>(subchain[i]); 
+        cout << "char pointer val: " << char_ptr[i] << endl;
+
+        int_ptr[i] = get<1>(subchain[i]);
+        cout << "int pointer val: " << int_ptr[i] << endl;
     };
 
-    for (int i = 0; i < arr_length; ++i)
-    {
-        int_prt[i] = get<1>(subchain[i]);
-        cout << int_prt[i] << endl;
-    };
   
     return true; 
 };

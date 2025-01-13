@@ -326,6 +326,16 @@ bool grid_management::subchain_verif(vector<tuple<char, int>> subchain)
 
         int_ptr[i] = get<1>(subchain[i]);
         cout << "int pointer val: " << int_ptr[i] << endl;
+
+        
+        if (holds_alternative<char>(mixed_grid[i])) {
+            cout << "value at i: " << get<char>(mixed_grid[i]) << endl; //why is this always zero if it's set to int and false if it's set to char?
+        }
+        else
+        {
+            cout << "no value here" << endl; 
+        }
+    
     };
 
   
@@ -359,12 +369,12 @@ void grid_management::check_positions()
             {
                 cout << "int: " << get<int>(cell_i) << endl;
             }
-            else if (holds_alternative<char>(cell_i))
+            else if (holds_alternative<char>(cell_i)) //this works for recognizing a char! important! 
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 char char_success = get<char>(cell_i);
                 //cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-
+                cout << "char: " << char_success << endl; 
                 /*
                 so first here we're gonna add it to a subchain, which doesn't get added to the final chain until it's verified that the valid letters did not change. 
                 this will need the positions of the collected letters 
@@ -387,7 +397,7 @@ void grid_management::check_positions()
                 cout << "shouldn't be here" << endl;
             }
         }
-        tuple<char, int> test_element = make_tuple('a', 25);//so in this example, we are verifying that there still is an 'a' at index 25. If not, that needs to be dealt with
+        tuple<char, int> test_element = make_tuple('a', 72);//so in this example, we are verifying that there still is an 'a' at index 25. If not, that needs to be dealt with
         current_subchain.push_back(test_element);
 
 

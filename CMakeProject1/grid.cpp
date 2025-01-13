@@ -289,10 +289,10 @@ unordered_map<char, string> combo_reference
 
 };
 //this only gets called if the vector is not empty, so there should always be a valid return. 
-vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
+vector<char> chain_mechanics::chaining()
 {
     cout << "inside chaining" << endl; 
-    cm1.print_char_evals(elements_to_eval);
+    cm1.print_char_evals();
     /*algorithm
     -need to look for certain matches, like if there's an S and an A and shit like that 
     -if there is, store them on the chain in the proper order
@@ -306,41 +306,6 @@ vector<char> chain_mechanics::chaining(vector<char> elements_to_eval)
     return temp2;
 };
 
-
-
-bool grid_management::subchain_verif(vector<tuple<char, int>> subchain) 
-{
-    cout << "inside subchain verif" << endl;
-    const int arr_length = subchain.size(); //use this to make arrays
-    cout << "arr length" << arr_length << endl;
-
-
-    unique_ptr<char[]> char_ptr = make_unique<char[]>(arr_length);
-    unique_ptr<int[]> int_ptr = make_unique<int[]>(arr_length);
-    //vector<int> ints_arr = {};
-
-    for (int i = 0; i < arr_length; ++i)
-    {
-        char_ptr[i] = get<0>(subchain[i]); 
-        cout << "char pointer val: " << char_ptr[i] << endl;
-
-        int_ptr[i] = get<1>(subchain[i]);
-        cout << "int pointer val: " << int_ptr[i] << endl;
-
-        
-        if (holds_alternative<char>(mixed_grid[i])) {
-            cout << "value at i: " << get<char>(mixed_grid[i]) << endl; //why is this always zero if it's set to int and false if it's set to char?
-        }
-        else
-        {
-            cout << "no value here" << endl; 
-        }
-    
-    };
-
-  
-    return true; 
-};
 
 
 
@@ -357,7 +322,7 @@ void grid_management::check_positions()
     };
     //ok so we need to take that surrounding array and find the values in the mixed grid held at those indexes
     //print_grid();
-
+    tuple<char, int> final_element;
     //no need to print, just locate so it can use that data 
     if (!surrounding_array.empty())//may be able to remove this
     {
@@ -373,35 +338,21 @@ void grid_management::check_positions()
             {//ok so if one is found here, AND it matches correctly with the map up top, that means it is a valid target found. a success
                 //in other words, if we reach this point it passes the first check of being a char in the given range
                 char char_success = get<char>(cell_i);
+                int char_index = static_cast<int>(i);
                 //cout << "char: " << char_success << endl; //then this stuff needs to be eval'd, and that goes until the chain breaks or a win is found
-                cout << "char: " << char_success << endl; 
-                /*
-                so first here we're gonna add it to a subchain, which doesn't get added to the final chain until it's verified that the valid letters did not change. 
-                this will need the positions of the collected letters 
-                pass that subchain to the function here, value and cell number 
-                */
-                tuple<char, int> element = make_tuple(char_success, static_cast<int>(i));
-                /*
-                cout << "tuple char: " << get<0>(element) << endl;
-                cout << "tuple int: " << get<1>(element) << endl; 
-                current_subchain.push_back(element);
-                */
+                cout << "char: " << char_success << endl; //so what we 
 
-
-
-                //chars_to_eval.push_back(char_success); 
-                //cm1.print_char_evals(chars_to_eval);
+                cout << "index char was found at: " << char_index << endl; 
+                final_element = make_tuple(char_success, static_cast<int>(i)); //then what we need to do, during final verification, is ensure that this combo is still true
+          
+    
             }
             else
             {
                 cout << "shouldn't be here" << endl;
             }
         }
-        tuple<char, int> test_element = make_tuple('a', 72);//so in this example, we are verifying that there still is an 'a' at index 25. If not, that needs to be dealt with
-        current_subchain.push_back(test_element);
 
-
-        subchain_verif(current_subchain);
     }
     else
     {
@@ -411,20 +362,20 @@ void grid_management::check_positions()
      //pass the collection into chaining. no return
     if (!chars_to_eval.empty())
     {
-        cm1.chaining(chars_to_eval);
+        cm1.chaining();
     }
     else
     {
-        cout << "no chars to eval" << endl;
+        cout << "in check positions no chars to eval" << endl;
     };
 
 };
 
-void chain_mechanics::print_char_evals(vector<char> chars_to_ev)
+void chain_mechanics::print_char_evals()
 {
-    if (!chars_to_ev.empty())
+    if (!chars_to_eval.empty())
     {
-        for (char c : chars_to_ev)
+        for (char c : chars_to_eval)
         {
             cout << "char to ev: " << c << endl;
         };

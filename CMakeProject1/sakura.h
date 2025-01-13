@@ -60,7 +60,6 @@ public:
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
     void print_collected(vector<char> ) const;
-    bool subchain_verif(vector <tuple<char,int>>);
     vector<char> chars_to_eval;
 
     grid_management()
@@ -74,8 +73,8 @@ public:
 class chain_mechanics : public grid_management
 {
 public: 
-    vector<char> chaining(vector<char>);
-    void print_char_evals(vector<char>);
+    vector<char> chaining();
+    void print_char_evals();
     vector<char> final_char_chain; //chain of collection 
 
     chain_mechanics()

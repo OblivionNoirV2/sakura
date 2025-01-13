@@ -1,4 +1,4 @@
-#include "CMakeProject1.h"
+#include "sakura.h"
 #include <iostream>
 #include <algorithm>
 #include <tuple>//for storing coords

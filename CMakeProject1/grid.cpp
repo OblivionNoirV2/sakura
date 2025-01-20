@@ -282,23 +282,18 @@ surroundings_type positions_to_check =
     -1, 1, 12, 13, 14, -14, -13, -12
 };
 
-chain_mechanics cm1;
 
-unordered_map<char, string> combo_reference
-{
 
-};
 //this only gets called if the vector is not empty, so there should always be a valid return. 
 vector<char> chain_mechanics::chaining()
 {
     cout << "inside chaining" << endl; 
-    cm1.print_char_evals();
-    /*algorithm
-    -need to look for certain matches, like if there's an S and an A and shit like that 
-    -if there is, store them on the chain in the proper order
-    -remove those letters from the vector via index (remember this means we need to remove them from the grid as well!) 
-    -remember, by the time it's gotten here we already know the positions are valid so we just need to check for the right combinations
-    -due to how the board is set up, this chain will only get fully cleared when the game ends
+    print_tuple_evals();
+    //by the time we get here, the positions and letters should already be checked. the purpose now is to move it to victory checking if there's 6 or more values 
+    // //and the turn limit is not reached
+    //then in vc we need to make sure nothing changed on the grid
+    /*
+
     -ends when a "sakura" is found or turn limit is reached (turn limit should be checked before any major computations take place
     */
     vector <char> temp2 = { 'c' };
@@ -322,7 +317,7 @@ void grid_management::check_positions()
     };
     //ok so we need to take that surrounding array and find the values in the mixed grid held at those indexes
     //print_grid();
-    tuple<char, int> final_element;
+    tuple<char, int> pre_final_element;
     //no need to print, just locate so it can use that data 
     if (!surrounding_array.empty())//may be able to remove this
     {
@@ -343,9 +338,10 @@ void grid_management::check_positions()
                 cout << "char: " << char_success << endl; //so what we 
 
                 cout << "index char was found at: " << char_index << endl; 
-                final_element = make_tuple(char_success, static_cast<int>(i)); //then what we need to do, during final verification, is ensure that this combo is still true
-          
-    
+                pre_final_element = make_tuple(char_success, char_index); //then what we need to do, during final verification, is ensure that this combo is still true 
+                //because it's possible for things to be overwritten
+                tuples_to_eval.push_back(pre_final_element);
+                
             }
             else
             {
@@ -360,9 +356,9 @@ void grid_management::check_positions()
     };
 
      //pass the collection into chaining. no return
-    if (!chars_to_eval.empty())
+    if (!tuples_to_eval.empty())//move this to chaining class 
     {
-        cm1.chaining();
+        chaining();
     }
     else
     {
@@ -371,13 +367,16 @@ void grid_management::check_positions()
 
 };
 
-void chain_mechanics::print_char_evals()
+
+
+void chain_mechanics::print_tuple_evals()
 {
-    if (!chars_to_eval.empty())
+    if (!tuples_to_eval.empty())
     {
-        for (char c : chars_to_eval)
+        for (auto& c : tuples_to_eval)
         {
-            cout << "char to ev: " << c << endl;
+            cout << "index 0:" << get<0>(c) << endl;
+            cout << "index 1:" << get<1>(c) << endl;
         };
 
     }

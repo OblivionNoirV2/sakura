@@ -59,14 +59,14 @@ public:
     void print_cell_values();
     void print_targets();
     vector<char> fetch_alph_relations(); //returns what needs to be searched for next
-    void print_collected(vector<char> ) const;
-    vector<char> chars_to_eval;
+    void print_collected(vector<char>) const;
+    vector<tuple<char, int>> tuples_to_eval;
 
     grid_management()
     {
         current_targets = { 'S' }; //default
         current_pos = 85;
-        chars_to_eval = {}; //this does not get reset (but is edited within the code) so it's more efficient to init here than in a method
+        tuples_to_eval = {}; //this does not get reset (but is edited within the code) so it's more efficient to init here than in a method
     };
 };
 
@@ -74,7 +74,7 @@ class chain_mechanics : public grid_management
 {
 public: 
     vector<char> chaining();
-    void print_char_evals();
+    void print_tuple_evals();
     vector<char> final_char_chain; //chain of collection 
 
     chain_mechanics()
